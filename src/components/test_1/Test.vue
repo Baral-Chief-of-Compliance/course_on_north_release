@@ -24,8 +24,6 @@
 import axios from 'axios';
 import AboutProject from './AboutProject.vue';
 import Carousel from './Carousel.vue';
-import Structure from './Structure.vue';
-import ClientsInfo from './ClientsInfo.vue';
 import VideoInfo from './VideoInfo.vue';
 import HelpComponent from './HelpComponent.vue';
 import GoToAnketaParticipant from './GoToAnketaParticipant.vue';
@@ -70,8 +68,6 @@ export default{
     components: {
         AboutProject,
         Carousel,
-        Structure,
-        ClientsInfo,
         VideoInfo,
         GoToAnketaParticipant,
         HelpComponent,
