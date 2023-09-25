@@ -14,12 +14,14 @@
         <v-container  class="py-10" >
             <TitleComponent :typeStyle="typeStyle" title="мурманская область" />
 
-            <div v-for="value in texts">
+            <!-- <div v-for="value in texts">
                 <TextForInfBlock :textContent="value" :textStyle="textComponent" />
-            </div>
-        
+            </div> -->
 
-            <div class="video-on-page" :style="{ width: maxWidthVideo + 'px', height: maxHeightVideo + 'px'}">
+            <TextForAboutRegion :textStyle="textComponent" />
+
+    
+            <div class="video-on-page" :style="{ width: width * similarityFactorWidth  + 'px', height: width * similarityFactorHeight + 'px'}">
                 <video  controls autoplay muted>
                     <source src="../../assets/videos/video-choose-yours-kolsky-3.mp4">
                 </video>
@@ -31,20 +33,20 @@
 <script>
 import TitleComponent from './../test_1/details/TitleComponents.vue';
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
+import TextForAboutRegion from './details/TextForAboutRegion.vue';
+import { get_start } from '@/tools/start.js';
 import { inject } from 'vue';
 
 
 
     export default{
         props:{
-            width: Number,
+            // width: Number,
             typeStyle: String
         },
 
         data(){
             return{
-                similarityFactorWidth: 0.67,
-                similarityFactorHeight: 0.42,
                 texts: [
                     'Мурманская область – относительно молодой регион, однако сегодня является флагманом развития Арктики.',
                     'Арктическая зона Российской Федерации – крупнейший в мире незамерзающий порт за Северным полярным кругом и транспортный узел у северных берегов нашей страны.',
@@ -64,23 +66,33 @@ import { inject } from 'vue';
             }
         },
 
-        computed: {
-            maxWidthVideo(){
-                return this.width * this.similarityFactorWidth
-            },
-
-            maxHeightVideo(){
-                return this.width * this.similarityFactorHeight
-            }
+        mounted(){
+            get_start();
         },
+
+        // computed: {
+        //     maxWidthVideo(){
+        //         return this.width * this.similarityFactorWidth
+        //     },
+
+        //     maxHeightVideo(){
+        //         return this.width * this.similarityFactorHeight
+        //     }
+        // },
 
         components: {
             TitleComponent,
-            TextForInfBlock 
+            TextForInfBlock,
+            TextForAboutRegion
         },
 
         setup(props){
             const mainColor = inject('mainColor')
+
+            const width = inject('width');
+
+            const similarityFactorWidth = 0.67;
+            const similarityFactorHeight = 0.42;
 
             const componentColor = {
                 backgroundColor: 'white'
@@ -96,7 +108,24 @@ import { inject } from 'vue';
                 textComponent.color = 'white'
             }
 
-            return { mainColor, componentColor, textComponent }  
+            function maxWidthVideo(){
+                return width * similarityFactorWidth
+            }
+
+            function maxHeightVideo(){
+                return this.width * this.similarityFactorHeight
+            }
+
+            return { 
+                mainColor, 
+                componentColor, 
+                textComponent, 
+                width, 
+                maxWidthVideo,  
+                maxHeightVideo,
+                similarityFactorWidth,
+                similarityFactorHeight
+            }  
         }
     }
 </script>

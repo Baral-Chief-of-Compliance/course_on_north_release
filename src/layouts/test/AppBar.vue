@@ -5,7 +5,7 @@
             max-width="115"
             width="100%"
             src="../../assets/logo/logo-for-header-on-gray.svg"
-            @click="go_to_menu_punkt('carousel')"
+            @click="go_to_other_punkt('TestHome_1')"
             class="logo"
         />
 
@@ -18,13 +18,22 @@
         <div class="mr-11" v-if="width > 1555">
  
             <v-row justify="center" no-gutters v-if="width > 1555">
-                <nav-option-button label="о проекте" @go-to="go_to_menu_punkt('about_project')" />
+                <!-- <nav-option-button label="о проекте" @go-to="go_to_menu_punkt('about_project')" />
                 <nav-option-button label="помощь" @go-to="go_to_menu_punkt('help')" />
                 <nav-option-button label="мурманская область" @go-to="go_to_menu_punkt('murman_region')" />
                 <nav-option-button label="соискателю" @go-to="go_to_other_punkt('AnketaSoiskatelya')" />
                 <nav-option-button label="работодателю" @go-to="go_to_other_punkt('AnketaEmployer')" />
                 <nav-option-button label="медработникам" @go-to="go_to_menu_punkt('health_worker_info')" />
-                <nav-option-button label="педагогам" @go-to="go_to_menu_punkt('teachers')" />
+                <nav-option-button label="педагогам" @go-to="go_to_menu_punkt('teachers')" /> -->
+
+
+                <nav-option-button label="о проекте" @go-to="go_to_other_punkt('AboutProject')" />
+                <nav-option-button label="помощь" @go-to="go_to_other_punkt('Help')" />
+                <nav-option-button label="мурманская область" @go-to="go_to_other_punkt('AboutRegion')" />
+                <nav-option-button label="соискателю" @go-to="go_to_other_punkt('AnketaSoiskatelya')" />
+                <nav-option-button label="работодателю" @go-to="go_to_other_punkt('AnketaEmployer')" />
+                <nav-option-button label="медработникам" @go-to="go_to_other_punkt('HealthWorkers')" />
+                <nav-option-button label="педагогам" @go-to="go_to_other_punkt('Teachers')" />
             </v-row>
 
         </div>
@@ -43,13 +52,21 @@
         v-if="width <= 1555"
       >
         <v-list>
-            <v-list-item @click="go_to_menu_punkt('about_project')"><span class="nav-option-mobile">О ПРОЕКТЕ</span></v-list-item>
+            <!-- <v-list-item @click="go_to_menu_punkt('about_project')"><span class="nav-option-mobile">О ПРОЕКТЕ</span></v-list-item>
             <v-list-item @click="go_to_menu_punkt('help')"><span class="nav-option-mobile">ПОМОЩЬ</span></v-list-item>
             <v-list-item @click="go_to_menu_punkt('murman_region')"><span class="nav-option-mobile">МУРМАНСКАЯ ОБЛАСТЬ</span></v-list-item>
             <v-list-item @click="go_to_other_punkt('AnketaSoiskatelya')"><span class="nav-option-mobile">СОИСКАТЕЛЮ</span></v-list-item>
             <v-list-item @click="go_to_other_punkt('AnketaEmployer')"><span class="nav-option-mobile">РАБОТОДАТЕЛЮ</span></v-list-item>
             <v-list-item @click="go_to_menu_punkt('health_worker_info')"><span class="nav-option-mobile">МЕДРАБОТНИКАМ</span></v-list-item>
-            <v-list-item @click="go_to_menu_punkt('teachers')"><span class="nav-option-mobile">ПЕДАГОГАМ</span></v-list-item>
+            <v-list-item @click="go_to_menu_punkt('teachers')"><span class="nav-option-mobile">ПЕДАГОГАМ</span></v-list-item> -->
+
+            <v-list-item @click="go_to_other_punkt('AboutProject')"><span class="nav-option-mobile">О ПРОЕКТЕ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('Help')"><span class="nav-option-mobile">ПОМОЩЬ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('AboutRegion')"><span class="nav-option-mobile">МУРМАНСКАЯ ОБЛАСТЬ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('AnketaSoiskatelya')"><span class="nav-option-mobile">СОИСКАТЕЛЮ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('AnketaEmployer')"><span class="nav-option-mobile">РАБОТОДАТЕЛЮ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('HealthWorkers')"><span class="nav-option-mobile">МЕДРАБОТНИКАМ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('Teachers')"><span class="nav-option-mobile">ПЕДАГОГАМ</span></v-list-item>
         </v-list>
       </v-navigation-drawer>
 </template>
@@ -115,6 +132,10 @@ export default{
             set_part_of_navbar(refName)
             this.$router.push({name: refName})
         },
+
+        // go_to_another_page(refName){
+        //     this.$router.push({name: refName })
+        // }
     }
 }
 </script>

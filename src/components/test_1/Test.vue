@@ -1,5 +1,5 @@
 <template >
-  <transition name="fade">
+  <!-- <transition name="fade">
     <div v-if="scrollValue > 50" @click="go_top" class="control-scroll">
       <v-img class="img-arrow-up"
             max-height="30"
@@ -8,15 +8,19 @@
             src="../../assets/for_manipulation/arrow-ap.svg"
         />
     </div>
-  </transition>
+  </transition> -->
+  
   <carousel/>
-  <about-project typeStyle="reverse" />
-  <help-component />
-  <video-info :width="width" typeStyle="reverse" />
-  <go-to-anketa-participant :width="width" />
 
-  <health-worker-info typeStyle="reverse" />
-  <teachers-info />
+  <!-- <about-project typeStyle="reverse" />
+  <help-component /> -->
+
+  <!-- <video-info :width="width" typeStyle="reverse" /> -->
+
+  <!-- <go-to-anketa-participant :width="width" /> -->
+
+  <!-- <health-worker-info typeStyle="reverse" />
+  <teachers-info /> -->
 </template>
 
 
@@ -29,8 +33,7 @@ import HelpComponent from './HelpComponent.vue';
 import GoToAnketaParticipant from './GoToAnketaParticipant.vue';
 import HealthWorkerInfo from './HealthWorkerInfo.vue'; 
 import TeachersInfo from './TeachersInfo.vue';
-
-
+import { get_start } from '@/tools/start.js';
 import { registerPlugins } from '@/plugins';
 import { useWindowSize} from '@vueuse/core';
 
@@ -90,7 +93,11 @@ export default{
       const { width, height} = useWindowSize()
 
       return { width, height }
-    }
+    },
+
+    mounted(){
+            get_start();
+    },
 }
 </script>
 

@@ -6,7 +6,7 @@
             :width="width"
             hide-delimiter-background
             show-arrows="hover"
-            :color="mainColor"
+            :color="addColor"
         > 
 
             <v-carousel-item v-for="img in imgs">
@@ -19,13 +19,13 @@
                         >
                         <v-row class="mt-15 mx-15">
                             <v-col cols="2">
-                                <v-img
+                                <!-- <v-img
                                     src="@/assets/gerb/gerb_murmansk_line.svg"
                                     :max-height="150/900 * height"
                                     :max-width="150/1900 * width"
                                     contain
                                 >    
-                                </v-img>
+                                </v-img> -->
                             </v-col>
 
                             <v-col cols="8">
@@ -43,9 +43,9 @@
                                 <div class="title_carousel" :style="{fontSize: width * 0.1042 + 'px'}">
                                     {{ img.title }}
                                 </div>
-                                <div :class="[ width > 1350 ? 'subtitle_carousel mx-15 text-center':  (width > 500) ? 'subtitle_carousel_mobile mx-15 text-center' :  'subtitle_carousel_mega_small mx-15 text-center' ]">
+                                <!-- <div :class="[ width > 1350 ? 'subtitle_carousel mx-15 text-center':  (width > 500) ? 'subtitle_carousel_mobile mx-15 text-center' :  'subtitle_carousel_mega_small mx-15 text-center' ]">
                                     {{ img.subtitle }}
-                                </div>
+                                </div> -->
                                 
                             </div>
                             
@@ -68,7 +68,7 @@ export default{
             imgs: [
                 {
                     name:'1_overlay_25.jpg',
-                    title: 'курс на север',
+                    title: 'на севере жить',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
@@ -78,27 +78,27 @@ export default{
                 },
                 {
                     name:'3_overlay_25.jpg',
+                    title: 'на севере работать',
+                    subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
+                },
+                {
+                    name:'6_overlay_25.jpg',
+                    title: 'на севере жить',
+                    subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
+                },
+                {
+                    name:'5_overlay_25.jpg',
                     title: 'курс на север',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
                     name:'4_overlay_25.jpg',
-                    title: 'курс на север',
-                    subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
-                },
-                {
-                    name:'5_overlay_25.jpg',
-                    title: 'на севере - жить!',
-                    subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
-                },
-                {
-                    name:'6_overlay_25.jpg',
-                    title: 'на севере - жить!',
+                    title: 'на севере работать',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
                     name:'7_overlay_25.jpg',
-                    title: 'на севере - жить!',
+                    title: 'на севере - жить',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 }
             ],
@@ -110,12 +110,13 @@ export default{
         const width = inject('width')
         const height = inject('height')
         const mainColor = inject('mainColor')
+        const addColor = inject('addColor');
 
         function get_image_URL(name){
             return new URL(`../../assets/jpg_for_carousel/compression/${name}`, import.meta.url).href
         }
 
-        return { width, height, mainColor, get_image_URL}
+        return { width, height, mainColor, get_image_URL, addColor}
     }
 
 }

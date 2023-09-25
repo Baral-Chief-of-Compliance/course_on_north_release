@@ -2,7 +2,7 @@
     <div id="teachers" :style="componentColor">
         <v-container  class="py-10">
             <TitleComponent :typeStyle="typeStyle" title="меры поддержки педагогических работников" />
-            <TextForInfBlock :textContent="text" :textStyle="textComponent" />
+            <!-- <TextForInfBlock :textContent="text" :textStyle="textComponent" /> -->
 
             <v-row>
                 <v-col v-if="width > 1280" cols="2"></v-col>
@@ -97,8 +97,9 @@
 </template>
 
 <script>
-import TitleComponent from './../test_1/details/TitleComponents.vue'
+import TitleComponent from './../test_1/details/TitleComponents.vue';
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
+import { get_start } from '@/tools/start.js';
 import { inject } from 'vue';
 
 
@@ -118,6 +119,10 @@ export default{
     components: {
         TitleComponent,
         TextForInfBlock
+    },
+
+    mounted(){
+        get_start();
     },
 
 

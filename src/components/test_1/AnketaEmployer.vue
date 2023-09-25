@@ -1,7 +1,7 @@
 <template>
     <v-container>
 
-        <button-back label="на главную" @my-event="go_back" />
+        <!-- <button-back label="на главную" @my-event="go_back" /> -->
 
         <anket-title title="Анкета работодателя" />
         <anket-text 

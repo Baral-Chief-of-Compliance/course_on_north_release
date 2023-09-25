@@ -39,6 +39,7 @@
 <script>
 import TitleComponent from './../test_1/details/TitleComponents.vue';
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
+import { get_start } from '@/tools/start.js'
 import { inject } from 'vue';
 
 export default{
@@ -59,6 +60,10 @@ export default{
     components:{
         TitleComponent,
         TextForInfBlock
+    },
+
+    mounted(){
+        get_start()
     },
 
     setup(props){

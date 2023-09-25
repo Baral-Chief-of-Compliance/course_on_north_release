@@ -2,7 +2,7 @@
     <div id="health_worker_info" :style="componentColor">
         <v-container  class="py-10">
             <TitleComponent :typeStyle="typeStyle" title="меры поддержки для медецинских работников" />
-            <TextForInfBlock :textContent="text" :textStyle="textComponent" />
+            <!-- <TextForInfBlock :textContent="text" :textStyle="textComponent" /> -->
 
             <v-row v-for="(card, index) in cards_info" >
                 <v-col v-if="width > 1280" :cols="index === 3 ? 3:1"></v-col>
@@ -21,9 +21,10 @@
 </template>
 
 <script>
-import TitleComponent from './../test_1/details/TitleComponents.vue'
+import TitleComponent from './../test_1/details/TitleComponents.vue';
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
-import HealthInfoCard from './../test_1/details/HealthInfo/HealthInfoCard.vue'
+import HealthInfoCard from './../test_1/details/HealthInfo/HealthInfoCard.vue';
+import { get_start } from '@/tools/start.js';
 import { inject } from 'vue';
 
 export default{
@@ -77,6 +78,10 @@ export default{
         TitleComponent,
         TextForInfBlock,
         HealthInfoCard
+    },
+
+    mounted(){
+        get_start();
     },
 
     props: {

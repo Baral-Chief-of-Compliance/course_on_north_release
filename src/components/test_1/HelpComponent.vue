@@ -2,8 +2,8 @@
     <div id="help" :style="componentColor">
         <v-container class="py-10">
             <TitleComponent  :typeStyle="typeStyle" title="чем мы можем помочь?" />
-            <TextForInfBlock :textContent="text_1" :textStyle="textComponent" />
-            <TextForInfBlock :textContent="text_2" :textStyle="textComponent" />
+            <!-- <TextForInfBlock :textContent="text_1" :textStyle="textComponent" />
+            <TextForInfBlock :textContent="text_2" :textStyle="textComponent" /> -->
         </v-container>
     </div>
 </template>
@@ -11,6 +11,7 @@
 <script>
 import TitleComponent from './../test_1/details/TitleComponents.vue'
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
+import { get_start } from '@/tools/start.js'
 import { inject } from 'vue';
 
 export default{
@@ -29,6 +30,10 @@ export default{
     components: {
         TitleComponent,
         TextForInfBlock
+    },
+
+    mounted(){
+        get_start();
     },
 
     setup(props){
