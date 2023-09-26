@@ -4,7 +4,7 @@
             <TitleComponent :typeStyle="typeStyle" title="меры поддержки для медецинских работников" />
             <!-- <TextForInfBlock :textContent="text" :textStyle="textComponent" /> -->
 
-            <v-row v-for="(card, index) in cards_info" >
+            <!-- <v-row v-for="(card, index) in cards_info" >
                 <v-col v-if="width > 1280" :cols="index === 3 ? 3:1"></v-col>
 
                 <v-col :cols="index === 3 ? (( width > 1280) ? 6: 12)  : (( width > 1280) ? 5: 12)" v-for="inf in card">
@@ -15,7 +15,23 @@
                 </v-col>
 
                 <v-col v-if="width > 1280" :cols="index === 3 ? 3:1"></v-col>
-            </v-row>
+            </v-row> -->
+
+            <v-container v-if="width > 960" >
+                <v-row  v-for="card in new_cards">
+                    <v-col ></v-col>
+
+                    <v-col>
+                        <InfImg :path="card" />
+                    </v-col>
+
+                    <v-col></v-col>
+                </v-row>            
+            </v-container>
+
+            <div class="my-5" v-for="card in new_cards" v-if="width <= 960">
+                <InfImg :path="card" />
+            </div>
         </v-container>
     </div>
 </template>
@@ -24,6 +40,7 @@
 import TitleComponent from './../test_1/details/TitleComponents.vue';
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
 import HealthInfoCard from './../test_1/details/HealthInfo/HealthInfoCard.vue';
+import InfImg from './details/HealthInfo/InfImg.vue';
 import { get_start } from '@/tools/start.js';
 import { inject } from 'vue';
 
@@ -70,6 +87,13 @@ export default{
                         path: '7.jpg'
                     }
                 ]
+            ],
+
+            new_cards: [
+                'health_worker/new_1.png',
+                'health_worker/new_2.png',
+                'health_worker/new_3.png',
+                'health_worker/new_4.png'
             ]
         }
     },
@@ -77,7 +101,8 @@ export default{
     components: {
         TitleComponent,
         TextForInfBlock,
-        HealthInfoCard
+        HealthInfoCard,
+        InfImg
     },
 
     mounted(){

@@ -4,7 +4,7 @@
             <TitleComponent :typeStyle="typeStyle" title="меры поддержки педагогических работников" />
             <!-- <TextForInfBlock :textContent="text" :textStyle="textComponent" /> -->
 
-            <v-row>
+            <!-- <v-row>
                 <v-col v-if="width > 1280" cols="2"></v-col>
 
                 <v-col :cols="(width > 1280) ? 8 : 12">
@@ -91,7 +91,24 @@
                 </v-col>
 
                 <v-col v-if="width > 1280" cols="2"></v-col>
-            </v-row>
+            </v-row> -->
+
+            <v-container v-if="width > 960" >
+                <v-row  v-for="card in new_cards">
+                    <v-col ></v-col>
+
+                    <v-col>
+                        <InfImg :path="card" />
+                    </v-col>
+
+                    <v-col></v-col>
+                </v-row>            
+            </v-container>
+
+            <div class="my-5" v-for="card in new_cards" v-if="width <= 960">
+                <InfImg :path="card" />
+            </div>
+
         </v-container>
     </div>
 </template>
@@ -99,6 +116,7 @@
 <script>
 import TitleComponent from './../test_1/details/TitleComponents.vue';
 import TextForInfBlock from './../test_1/details/TextForInfBlock.vue';
+import InfImg from './details/HealthInfo/InfImg.vue';
 import { get_start } from '@/tools/start.js';
 import { inject } from 'vue';
 
@@ -109,6 +127,14 @@ export default{
         return{
             text: 'Равным образом постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции требуют от нас анализа форм развития. Задача организации, в особенности же консультация с широким активом позволяет оценить значение системы обучения кадров, соответствует насущным потребностям. Товарищи! новая модель организационной деятельности обеспечивает широкому кругу (специалистов) участие в формировании форм развития.',
             dialog: false,
+
+            new_cards: [
+                'teachers/new_1.png',
+                'teachers/new_2.png',
+                'teachers/new_3.png',
+                'teachers/new_4.png',
+                'teachers/new_5.png'
+            ]
         }
     },
 
@@ -118,7 +144,8 @@ export default{
 
     components: {
         TitleComponent,
-        TextForInfBlock
+        TextForInfBlock,
+        InfImg
     },
 
     mounted(){
