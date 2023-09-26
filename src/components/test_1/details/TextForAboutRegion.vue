@@ -46,14 +46,14 @@ export default{
     .text_style{
         font-family: "MontserratMedium";
         font-size: 18px;
-        line-height: 2;
+        line-height: 1.7;
         text-align: justify;
     }
 
     .text_style_mobile{
         font-family: "MontserratMedium";
         font-size: 16px;
-        line-height: 2;
+        line-height: 1.5;
         text-align: justify;
     }
 

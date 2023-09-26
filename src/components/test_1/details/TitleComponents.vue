@@ -44,6 +44,7 @@ export default{
     line-height: 76px;
     font-family: "CorkiRegular";
     text-transform: uppercase;
+    text-align: center;
 }
 
 .nav_title_mobile{
@@ -53,6 +54,7 @@ export default{
     font-family: "CorkiRegular";
     text-transform: uppercase;
     line-height: 1.2;
+    text-align: center;
 }
 
 </style>

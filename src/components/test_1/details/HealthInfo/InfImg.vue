@@ -3,6 +3,7 @@
         :src="imgPath"
         class="my-10 elevation-15"
         :width="( width > 1200) ? 1000 : (width > 960) ? 700 : width"
+        :height="( width> 1200) ? 1000: (width > 960) ? 700 : (width - 50)"
         max-height="1810"
     >
     <template v-slot:placeholder>

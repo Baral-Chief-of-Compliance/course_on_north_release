@@ -1,5 +1,5 @@
 <template >
-  <!-- <transition name="fade">
+  <transition name="fade">
     <div v-if="scrollValue > 50" @click="go_top" class="control-scroll">
       <v-img class="img-arrow-up"
             max-height="30"
@@ -8,19 +8,19 @@
             src="../../assets/for_manipulation/arrow-ap.svg"
         />
     </div>
-  </transition> -->
-  
+  </transition>
+
   <carousel/>
 
-  <!-- <about-project typeStyle="reverse" />
-  <help-component /> -->
+  <about-project typeStyle="reverse" />
+  <help-component />
 
-  <!-- <video-info :width="width" typeStyle="reverse" /> -->
+  <video-info :width="width" typeStyle="reverse" />
 
   <!-- <go-to-anketa-participant :width="width" /> -->
 
-  <!-- <health-worker-info typeStyle="reverse" />
-  <teachers-info /> -->
+  <health-worker-info  />
+  <teachers-info typeStyle="reverse" />
 </template>
 
 
