@@ -6,9 +6,6 @@
         :height="( width> 1200) ? 1000: (width > 960) ? 700 : (width - 50)"
         max-height="1810"
     >
-    <template v-slot:placeholder>
-        <v-skeleton-loader color="gray"></v-skeleton-loader>
-    </template>
     </v-img>
 </template>
 
