@@ -1,6 +1,6 @@
 <template>
     <v-col>
-        <v-btn @click="$emit('go-to')"><span :class="[ width >= 1555 ? 'nav-options':'nav-options-small']" :style="{color: navOptionColor}">{{ label }}</span></v-btn>
+        <v-btn @click="$emit('go-to')"><span class="nav-options"  :style="{color: navOptionColor, fontSize: [(width >= 1555) ? '18px': (width >= 1365) ? '15px' : (width >= 1305) ? '14px' : (width >= 1248)? '13px': (width >= 1190)? '12px': '11px' ] }">{{ label }}</span></v-btn>
     </v-col>
 </template>
 
@@ -9,19 +9,9 @@
         margin-left: auto;
         margin-right: auto;
         font-family: "MontserratMedium";
-        font-size: 18px;
         font-weight: 500;
         text-transform: uppercase;
-    }
-
-    .nav-options-small{
-        margin-left: auto;
-        margin-right: auto;
-        font-family: "MontserratMedium";
-        font-size: 15px;
-        font-weight: 500;
-        text-transform: uppercase;
-    }
+    }    
 </style>
 
 <script>

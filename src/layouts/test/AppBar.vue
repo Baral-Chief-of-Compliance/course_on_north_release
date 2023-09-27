@@ -11,13 +11,13 @@
 
         <!-- <v-btn @click="go_to_main"><div class="title-site">КУРС НА СЕВЕР!</div></v-btn>  -->
         <template v-slot:append>
-            <v-app-bar-nav-icon class="mr-10" v-if="width <= 1000" color="white" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon class="mr-10" v-if="width <= 1132" color="white" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <!-- <burger-menu /> -->
         </template>
-        <v-spacer v-if="width > 1000"></v-spacer>
-        <div class="mr-11" v-if="width > 1000">
+        <v-spacer v-if="width > 1132"></v-spacer>
+        <div class="mr-11" v-if="width > 1132">
  
-            <v-row justify="center" no-gutters v-if="width > 1000">
+            <v-row justify="center" no-gutters v-if="width > 1132">
                 <nav-option-button label="о проекте" @go-to="go_to_menu_punkt('about_project')" />
                 <nav-option-button label="помощь" @go-to="go_to_menu_punkt('help')" />
                 <nav-option-button label="мурманская область" @go-to="go_to_menu_punkt('murman_region')" />
@@ -37,7 +37,7 @@
             </v-row>
 
         </div>
-        <v-spacer v-if="width > 1000"></v-spacer>
+        <v-spacer v-if="width > 1132"></v-spacer>
 
     </v-app-bar>
 
@@ -49,7 +49,7 @@
         color="#eb6635"
         :width="360"
         temporary
-        v-if="width <= 1555"
+        v-if="width <= 1132"
       >
         <v-list>
             <v-list-item @click="go_to_menu_punkt('about_project')"><span class="nav-option-mobile">О ПРОЕКТЕ</span></v-list-item>
