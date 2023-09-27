@@ -1,7 +1,7 @@
 <template>
     <v-img
         :src="imgPath"
-        class="my-10 elevation-15"
+        class="my-10 elevation-15 bg-white"
         :width="( width > 1200) ? 1000 : (width > 960) ? 700 : width"
         :height="( width> 1200) ? 1000: (width > 960) ? 700 : (width - 50)"
         max-height="1810"
