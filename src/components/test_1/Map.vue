@@ -1,9 +1,9 @@
 <template>
     <v-container>
-        <v-btn @click="go_back"  variant="outlined" class="my-5">
-            <v-icon icon="mdi-arrow-collapse-left" color="#2F5DA7" class="mr-2"></v-icon>на главную
-        </v-btn>
-        <div :class="[width > 1000 ? 'text-h3 mb-5' : 'text-h5 mb-5 mx-5']" >Наше местоположение</div>
+        <button-back label="на главную" @my-event="go_back" />
+
+        <TitleComponent title="наша местоположение" />
+        
         <v-row justify="center" class="mt-5 mb-5">
             <yandex-map
                 :coords="[68.959745, 33.100978]"
@@ -22,13 +22,19 @@
 </template>
 
 <script>
-
-import { useWindowSize } from '@vueuse/core'
+import { inject } from 'vue';
+import ButtonBack from '@/components/test_1/details/ButtonBack.vue';
+import TitleComponent from './../test_1/details/TitleComponents.vue';
 
 export default{
 
+    components: {
+        ButtonBack,
+        TitleComponent
+    },
     setup(){
-        const { width, height} = useWindowSize()
+        const width = inject("width");
+        const height = inject("height")
 
         return { width, height }
     },

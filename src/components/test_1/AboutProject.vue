@@ -14,10 +14,18 @@
                 <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
             </v-row>
 
-            <v-row :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
+            <v-row v-if="width >= 585" :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
                 <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
                 <v-col :cols="[ width > 1280 ? 6 : 8 ]">«Курс на Север»: 8 (8152) 56-67-07</v-col>
                 <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+            </v-row>
+
+            <v-row v-if="width < 585" class="text_style_phone_number_mobile" :style="textComponent" no-gutters justify="center">
+                <v-col>«Курс на Север»:</v-col>
+            </v-row>
+
+            <v-row v-if="width < 585" class="text_style_phone_number_mobile" :style="textComponent" no-gutters justify="center">
+                <v-col>8 (8152) 56-67-07</v-col>
             </v-row>
         </v-container>
 

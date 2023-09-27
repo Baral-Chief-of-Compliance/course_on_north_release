@@ -17,39 +17,24 @@
                             contain
                             cover
                         >
-                        <v-row class="mt-15 mx-15">
-                            <v-col cols="2">
-                                <!-- <v-img
-                                    src="@/assets/gerb/gerb_murmansk_line.svg"
-                                    :max-height="150/900 * height"
-                                    :max-width="150/1900 * width"
-                                    contain
-                                >    
-                                </v-img> -->
-                            </v-col>
 
-                            <v-col cols="8">
+                            <div class="d-flex flex-column fill-height justify-center  text-white">
 
-                            </v-col>
-
-                            <v-col cols="2">
-                                <div class="heshtag_title" :style="{ fontSize: 50/1920 * width + 'px'}">
+                                <div :class="(width > 750)? 'heshtag_title text-end mx-15' : (width > 750)?  'heshtag_title text-end mx-10' : 'heshtag_title text-end mx-5'" :style="{ fontSize: 50/1920 * width + 'px'}">
                                     #насевережить
                                 </div>
-                            </v-col>
-                        </v-row>
 
-                            <div class="d-flex flex-column fill-height align-center text-white">
-                                <div class="title_carousel" :style="{fontSize: width * 0.1042 + 'px'}">
+                                <div class="title_carousel text-center" :style="{fontSize: width * 0.1042 + 'px'}">
                                     {{ img.title }}
                                 </div>
                                 <!-- <div :class="[ width > 1350 ? 'subtitle_carousel mx-15 text-center':  (width > 500) ? 'subtitle_carousel_mobile mx-15 text-center' :  'subtitle_carousel_mega_small mx-15 text-center' ]">
                                     {{ img.subtitle }}
                                 </div> -->
                                 
-                            </div>
-                            
+                            </div>                            
                     </v-parallax>
+
+
             </v-carousel-item>
 
         </v-carousel>
