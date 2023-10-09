@@ -1,12 +1,23 @@
 <template>
     <v-row class="d-flex justify-start">
-        <v-icon class="mt-1" color="white" icon="mdi-phone"></v-icon> 
-        <div class="ml-3 phone_number">8 (8152) 56-67-07</div>
+        <v-col cols="2">
+            <v-icon class="mt-1" color="white" icon="mdi-phone"></v-icon>
+        </v-col>
+
+        <v-col cols="10">
+            <div class="phone_number">8 (8152) 56-67-07</div>
+        </v-col>
+         
+        
     </v-row>
 
     <v-row class="d-flex justify-start">
-        <v-icon class="mt-2" color="white" icon="mdi-email"></v-icon> 
-        <a href="mailto:KursNaSever@murman-zan.ru>" class="ml-3 vk" >KursNaSever@murman-zan.ru</a>
+        <v-col cols="2">
+            <v-icon class="mt-2" color="white" icon="mdi-email"></v-icon> 
+        </v-col>
+        <v-col cols="10">
+            <a href="mailto:KursNaSever@murman-zan.ru" class="vk" >KursNaSever@&shy;murman-zan.ru</a>
+        </v-col>
     </v-row>
 
     <!-- <v-row class="d-flex justify-start">
@@ -15,19 +26,28 @@
     </v-row> -->
 
     <v-row class="d-flex justify-start">
-        <v-img  class="mt-1" src="@/assets/logo/vk_white_2.svg" max-width="23"></v-img> 
-        <a href="https://vk.com/czn_murman" class="ml-3 vk">vk.com/czn_murman</a>
+        <v-col cols="2">
+            <img  class="mt-2" src="@/assets/logo/vk_white_2.svg" width="24" height="24"/>
+        </v-col>
+
+        <v-col cols="10">
+            <a href="https://vk.com/czn_murman" class="vk">Мы ВКонтакте</a>
+        </v-col>
+        
+        
     </v-row>
 
     <v-row class="d-flex justify-start rights">
-        Мурманская область.<br>
-        ГОБУ Центр занятости населения<br>
-        Мурманской области<br>
-        Улица Книповича 48
+        <v-col>
+            Мурманская область.<br>
+            ГОБУ Центр занятости населения<br>
+            Мурманской области<br>
+            Улица Книповича 48
+        </v-col>
     </v-row>
     
     <v-row class="d-flex justify-start mt-10">
-        <v-btn @click="go_to_map" :style="{color: mainColor}">НАЙДИТЕ НАС НА КАРТЕ</v-btn>
+        <v-btn block @click="go_to_map" :style="{color: mainColor, fontSize: (width >= 1920)? '15px' : (width >= 250)? '12px' : (width >= 210)? '10px' : '9px'}">НАЙДИТЕ НАС НА КАРТЕ</v-btn>
     </v-row>
 
 </template>
@@ -39,8 +59,9 @@ import { inject } from 'vue'
 export default{
     setup(){
         const mainColor = inject('mainColor')
+        const width = inject('width')
 
-        return { mainColor }
+        return { mainColor, width }
     },
 
     methods: {

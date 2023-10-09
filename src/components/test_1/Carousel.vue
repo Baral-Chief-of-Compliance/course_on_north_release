@@ -20,9 +20,9 @@
 
                             <div class="d-flex flex-column fill-height justify-center  text-white">
 
-                                <div :class="(width > 750)? 'heshtag_title text-end mx-15' : (width > 750)?  'heshtag_title text-end mx-10' : 'heshtag_title text-end mx-5'" :style="{ fontSize: 50/1920 * width + 'px'}">
+                                <!-- <div :class="(width > 750)? 'heshtag_title text-end mx-15' : (width > 750)?  'heshtag_title text-end mx-10' : 'heshtag_title text-end mx-5'" :style="{ fontSize: 50/1920 * width + 'px'}">
                                     #насевережить
-                                </div>
+                                </div> -->
 
                                 <div class="title_carousel text-center" :style="{fontSize: width * 0.1042 + 'px'}">
                                     {{ img.title }}
@@ -53,27 +53,27 @@ export default{
             imgs: [
                 {
                     name:'1_overlay_25.jpg',
-                    title: 'на севере – жить',
+                    title: 'на севере – отдыхать',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
                     name:'2_overlay_25.jpg',
-                    title: 'проект «курс на север»',
-                    subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
-                },
-                {
-                    name:'3_overlay_25.jpg',
                     title: 'на севере – работать',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
-                    name:'6_overlay_25.jpg',
+                    name:'3_overlay_25.jpg',
                     title: 'на севере – жить',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
-                    name:'5_overlay_25.jpg',
-                    title: 'проект «курс на север»',
+                    name:'6_overlay_25.jpg',
+                    title: 'курс на север',
+                    subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
+                },
+                {
+                    name:'5_1_overlay_25.jpg',
+                    title: 'на севере – отдыхать',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 },
                 {
@@ -83,7 +83,7 @@ export default{
                 },
                 {
                     name:'7_overlay_25.jpg',
-                    title: 'на севере - жить',
+                    title: 'на севере – жить',
                     subtitle: 'Товарищи! сложившаяся структура организации играет важную роль в формировании новых предложений.'
                 }
             ],

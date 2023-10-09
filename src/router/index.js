@@ -18,7 +18,7 @@ import stub from '@/components/test_1/stumb/stumb.vue';
 const routes = [
 
   {
-    path: '/test',
+    path: '/test', 
     component: DefaultTest,
     children: [
       {
