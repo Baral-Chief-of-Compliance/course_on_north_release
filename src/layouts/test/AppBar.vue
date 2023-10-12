@@ -19,12 +19,12 @@
  
             <v-row justify="center" no-gutters v-if="width > 1132">
                 <nav-option-button label="о проекте" @go-to="go_to_menu_punkt('about_project')" />
-                <nav-option-button label="помощь" @go-to="go_to_menu_punkt('help')" />
                 <nav-option-button label="мурманская область" @go-to="go_to_menu_punkt('murman_region')" />
                 <nav-option-button label="соискателю" @go-to="go_to_other_punkt('AnketaSoiskatelya')" />
                 <nav-option-button label="работодателю" @go-to="go_to_other_punkt('AnketaEmployer')" />
                 <nav-option-button label="медработникам" @go-to="go_to_menu_punkt('health_worker_info')" />
                 <nav-option-button label="педагогам" @go-to="go_to_menu_punkt('teachers')" />
+                <nav-option-button label="новости" @go-to="go_to_other_punkt('News')" />
 
 
                 <!-- <nav-option-button label="о проекте" @go-to="go_to_other_punkt('AboutProject')" />
@@ -53,12 +53,13 @@
       >
         <v-list>
             <v-list-item @click="go_to_menu_punkt('about_project')"><span class="nav-option-mobile">О ПРОЕКТЕ</span></v-list-item>
-            <v-list-item @click="go_to_menu_punkt('help')"><span class="nav-option-mobile">ПОМОЩЬ</span></v-list-item>
             <v-list-item @click="go_to_menu_punkt('murman_region')"><span class="nav-option-mobile">МУРМАНСКАЯ ОБЛАСТЬ</span></v-list-item>
             <v-list-item @click="go_to_other_punkt('AnketaSoiskatelya')"><span class="nav-option-mobile">СОИСКАТЕЛЮ</span></v-list-item>
             <v-list-item @click="go_to_other_punkt('AnketaEmployer')"><span class="nav-option-mobile">РАБОТОДАТЕЛЮ</span></v-list-item>
             <v-list-item @click="go_to_menu_punkt('health_worker_info')"><span class="nav-option-mobile">МЕДРАБОТНИКАМ</span></v-list-item>
             <v-list-item @click="go_to_menu_punkt('teachers')"><span class="nav-option-mobile">ПЕДАГОГАМ</span></v-list-item>
+            <v-list-item @click="go_to_other_punkt('News')"><span class="nav-option-mobile">НОВОСТИ</span></v-list-item>
+            
 
             <!-- <v-list-item @click="go_to_other_punkt('AboutProject')"><span class="nav-option-mobile">О ПРОЕКТЕ</span></v-list-item>
             <v-list-item @click="go_to_other_punkt('Help')"><span class="nav-option-mobile">ПОМОЩЬ</span></v-list-item>

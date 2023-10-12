@@ -1,9 +1,9 @@
 <template>
      <v-container>
-        <v-btn @click="go_back"  variant="outlined" class="my-5">
-            <v-icon icon="mdi-arrow-collapse-left" color="#2F5DA7" class="mr-2"></v-icon>на главную
-        </v-btn>
-        <div class="text-h3">Новости</div>
+
+        <button-back label="на главную" @my-event="go_back"/>
+
+        <anket-title-vue title="Новости" />
         <v-card class="my-5">
             <v-card-title class="mb-5">
                 Параметры поиска
@@ -51,7 +51,16 @@
 </template>
 
 <script>
+import ButtonBack from './details/ButtonBack.vue';
+import AnketTitleVue from './details/ankets/AnketTitle.vue';
+
+
 export default{
+
+    components: {
+        ButtonBack,
+        AnketTitleVue
+    },
 
     data(){
         return{
@@ -64,16 +73,16 @@ export default{
     },
     methods: {
         go_back(){
-            this.$router.push({name: 'TestHome_1'})
+            this.$router.push({name: 'TestHome_1'});
         },
 
         get_start(){
-            window.scrollTo({ top: 0, behavior: 'smooth'})
+            window.scrollTo({ top: 0, behavior: 'smooth'});
         }
     },
 
     mounted(){
-        this.get_start()
+        this.get_start();
     }
 }
 </script>

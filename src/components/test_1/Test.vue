@@ -13,14 +13,14 @@
   <carousel/>
 
   <about-project typeStyle="reverse" />
-  <help-component />
+  <!-- <help-component /> -->
 
-  <video-info :width="width" typeStyle="reverse" />
+  <video-info :width="width" />
 
   <!-- <go-to-anketa-participant :width="width" /> -->
 
-  <health-worker-info  />
-  <teachers-info typeStyle="reverse" />
+  <health-worker-info  typeStyle="reverse"  />
+  <teachers-info />
 </template>
 
 
