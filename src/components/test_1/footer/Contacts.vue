@@ -31,7 +31,7 @@
         </v-col>
 
         <v-col cols="10">
-            <a href="https://vk.com/czn_murman" class="vk">Мы ВКонтакте</a>
+            <a href="https://vk.com/kurs_na_sever" class="vk">Мы ВКонтакте</a>
         </v-col>
         
         
