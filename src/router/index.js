@@ -8,7 +8,8 @@ import Map from '@/components/test_1/Map.vue';
 import ThanksAnketa from '@/components/test_1/ThanksAnketa.vue';
 import NotFound from '@/components/test_1/NotFound.vue';
 import stub from '@/components/test_1/stumb/stumb.vue';
-import News from '@/components/test_1/News.vue'
+import News from '@/components/test_1/News.vue';
+import NewsInf from '@/components/test_1/NewsInf.vue';
 // import AboutProject from '@/components/test_1/AboutProject.vue';
 // import VideoInfo from '@/components/test_1/VideoInfo.vue';
 // import HelpComponent from '@/components/test_1/HelpComponent.vue';
@@ -47,6 +48,12 @@ const routes = [
         path: '/news',
         name: 'News',
         component: News
+      },
+
+      {
+        path: '/news/:id',
+        name: 'NewsInf',
+        component: NewsInf
       },
 
       {
