@@ -8,70 +8,104 @@
             text="Заполните анкету работодателя."
         /> -->
 
-        <v-row :class="[ width > 1280 ? 'text_style' : 'text_style_mobile' ]" :style="textStyle" no-gutters justify="center">
+        <TitleComponent title="Анкета работодателя" />
+
+        <v-row :class="[ width > 1280 ? 'text_style py-10' : 'text_style_mobile py-10' ]" :style="textStyle" no-gutters justify="center">
             <v-col v-if="width > 1280"></v-col>
             <v-col :cols="[ width > 1280 ? 8 : 12 ]">
-                &nbsp;&nbsp;&nbsp;&nbsp;Мурманская область, относительно молодой регион, сегодня является   флагманом развития Арктики с крупнейшим в мире незамерзающим портом за полярным кругом и главным транспортным узлом у северных берегов нашей страны.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;В регионе сегодня реализуется ряд ключевых проектов, в том числе строительство морского терминала «Тулома» и порта «Лавна», а также ведется масштабная работа по созданию комфортной городской среды, модернизации учреждений образования, культуры и спортивных объектов в рамках реализации федеральных программ и регионального плана «На Севере – жить!». Только в 2022-2023 годах открыты три новых детских сада и школа, начаты работ по строительству еще двух учреждений образования, завершены капитальные ремонты сразу на четырех объектах. В регионе модернизированы более 200 кабинетов, спортивных залов, столовых и общественных пространств в школах и садах, в том числе созданы отлично оснащенные площадки для углубленного изучения предметов и подготовки к олимпиадам.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;В Мурманской области каждый второй житель регулярно занимается спортом и физической культурой. Этому способствует планомерная работа регионального правительства: за последние 4 года созданы и модернизированы более 60 спортивных объектов, в том числе крупные физкультурно-оздоровительные комплексы. В их числе – ФОК «Вертикаль» с одним из лучших скалодромов в СЗФО и современная инфраструктура Кировской спортивной школы олимпийского резерва с горнолыжным подъемником длиной 780 метров, системами оснежения и освещения. Кстати, покататься на горных лыжах или сноуборде в течение самого продолжительного в стране сезона можно не только в Кировске, обустроенные склоны есть в Мурманске, Мончегорске и Ковдоре. Также в разных муниципалитетах открыты лыжные трассы и катки, а с 2022 года открываются современные молодежные пространства «СОПКИ.СПОРТ», в которых северяне до 35 лет могут заниматься бесплатно. В 2023 году число залов достигнет 17.<br> 
-                &nbsp;&nbsp;&nbsp;&nbsp;Регион является пионером национального проекта «Культура»: в Мурманске открыта первая в стране библиотека, модернизированная по модельному стандарту, а также впервые проведена капитальная реновация объекта культуры в рамках одноименной федеральной инициативы. В заполярной столице работают три профессиональных театров, в том числе старейший за полярным кругом – областной театр кукол. А всего в регионе 13 областных музеев, филармония, 138 общедоступных библиотек, 24 из которых модельные, 50 детских школ искусств, музыкальных и художественных школ.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;В рамках регионального стратегического плана «На Севере – жить» в Мурманской области реализуется комплекс программ, направленных на повышение качества жизни северян. Так, «Свой дом в Арктике» - возможность получить выплату до 1,5 млн рублей на строительство, приобретение дома на первичном рынке или приобретение домокомплекта. С 5 июля 2022 года сертификаты уже получили более 600 северян общей суммой 813,7 млн рублей.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Активно развивается туристическая отрасль. Одна из изюминок нашего туризма – арктическая кухня с невероятно вкусными морепродуктами. Все туристы стремятся увидеть Териберку, полуостров Рыбачий, старинные Варзугу и Умбу, удивительные Лапландский заповедник и заповедник Пасквик<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;За последние годы решена проблема транспортной доступности в любую точку области, радуют обновленные железнодорожный вокзал и фирменные поезда, международный аэропорт федерального значения и возможность прямых перелетов.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Что и говорить, столица Арктики – сегодня одна из самых привлекательных для инвесторов территорий.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;А еще это край с душой, где дыхание природы рядом! Когда красота окружающего мира тебя вдохновляет!  И она всегда разная! То зимняя сказка со снежными сопками и северным сиянием в небе. То лето - в облаках цветущей сирени и морошковым ароматом в лесу, когда солнце забывает прятаться за горизонт. Осень в золоте лесов, или весна со свежим ветром перемен, похожая на наш Кольский край.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;И именно в этих северных широтах живут самые отзывчивые и доброжелательные люди, готовые всегда помочь и поддержать.<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Именно здесь, ты не только начнешь свой путь в профессии, но и станешь жителем перспективного региона с ярким будущим, найдешь преданных друзей и обязательно влюбишься в удивительное Кольское Заполярье!<br>
+
+                <div :class="[ width > 1280 ? 'title_question' : 'title_question_mobile']">Как принять участие в проекте «Курс на Север»</div><br>
+
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;Если вам необходимо подобрать сотрудника из числа соискателей, планирующих переезд в Мурманскую область, предлагаем стать участником проекта «Курс на Север».<br><br>
+                <span class="for_this">Для этого необходимо:</span><br>
+                <v-row class="d-flex justify-start ml-10">
+                    <v-col cols="1">
+                        <img  class="mt-2" src="@/assets/logo/logo_list_cns.svg" width="40" height="40"/>
+                    </v-col>
+
+                    <v-col cols="7" :class="[width > 625 ? 'mt-3' : 'mt-3 ml-5'] ">
+                        подать заявку в службу кадрового сопровождения;
+                    </v-col>
+                </v-row>
+                <v-row class="d-flex justify-start ml-10">
+                    <v-col cols="1">
+                        <img  class="mt-2" src="@/assets/logo/logo_list_cns.svg" width="40" height="40"/>
+                    </v-col>
+
+                    <v-col cols="7" :class="[width > 625 ? 'mt-3' : 'mt-3 ml-5'] ">
+                        заполнить анкету работодателя и прикрепить файл с кадровой потребностью;
+                    </v-col>
+                </v-row>
+
+                <v-row class="d-flex justify-start ml-10">
+                    <v-col cols="1">
+                        <img  class="mt-2" src="@/assets/logo/logo_list_cns.svg" width="40" height="40"/>
+                    </v-col>
+
+                    <v-col cols="7" :class="[width > 625 ? 'mt-3' : 'mt-3 ml-5']">
+                        дать согласие на участие в проекте и обработку персональных данных.
+                    </v-col>
+                </v-row> <br>
+                В течение максимум 5 рабочих дней с вами свяжется куратор и предложит на согласование соискателей, согласно заявленных требований, в т.ч. по уровню образования, профессиональных компетенций, опыта работы и ваших пожеланий. <br> 
+
+                <div :class="[ width > 1280 ? 'title_question mt-5' : 'title_question_mobile mt-5']">Служба кадрового сопровождения «Курс на Север» будет рада помочь вашей организации!</div>
             </v-col>
             <v-col v-if="width > 1280"></v-col>
         </v-row>
 
-        <v-container>
-            <v-form>
-                <text-field-component v-model="nameCompany" title="Полное наименование" :rules="nameCompanyRule" />
-                <address-card-input v-model="lawMail" class="mt-5" title="Юридеский адрес" @onOpenDialog="() => dialogEntityAddress = true "/>
-                
-                <v-dialog
-                    v-model="dialogEntityAddress"
-                    width="auto" 
-                >
-                    <address-card :close-dialog="() => dialogEntityAddress = false" title="Юридический адрес" v-model="lawMail" />
-                </v-dialog>
 
-                <button-anket 
-                    @click="dialogSendVacancies = true"
-                    title="Прикрепить вакансии"
-                    color-text="white"
-                    :color="excelColor"
-                    class="mb-5"
-                />
+        <v-row>
+            <v-col v-if="width > 1280"></v-col>
+            <v-col :cols="[ width > 1280 ? 8 : 12 ]">
+                <v-form>
+                    <text-field-component v-model="nameCompany" title="Полное наименование" :rules="nameCompanyRule" />
+                    <address-card-input v-model="lawMail" class="mt-5" title="Юридеский адрес" @onOpenDialog="() => dialogEntityAddress = true "/>
+                    
+                    <v-dialog
+                        v-model="dialogEntityAddress"
+                        width="auto" 
+                    >
+                        <address-card :close-dialog="() => dialogEntityAddress = false" title="Юридический адрес" v-model="lawMail" />
+                    </v-dialog>
 
-                <v-dialog
-                    v-model="dialogSendVacancies"
-                    width="auto"
-                >
-                    <vacancies-card :close-dialog="() => dialogSendVacancies = false" title="Прикрепить вакансии" />
-                </v-dialog>
+                    <button-anket 
+                        @click="dialogSendVacancies = true"
+                        title="Прикрепить вакансии"
+                        color-text="white"
+                        :color="excelColor"
+                        class="mb-5"
+                    />
 
-                <text-field-component :rules="contactRule" v-model="contact" title="ФИО контактного лица" />
-                <text-field-component :rules="phoneNumberRule" v-model="phoneNumber" title="Номер телефона" />
-                <text-field-component :rules="emailRule" v-model="email" title="Электронная почта" />
-                
-                <FileInputComponent 
-                    title="Карточка предприятия" 
-                />
-                
-                <button-anket
-                    type="submit"
-                    title="Отправить анкету"
-                    color-text="white"
-                    :color="mainColor"
-                />
+                    <v-dialog
+                        v-model="dialogSendVacancies"
+                        width="auto"
+                    >
+                        <vacancies-card :close-dialog="() => dialogSendVacancies = false" title="Прикрепить вакансии" />
+                    </v-dialog>
 
-            </v-form>
- 
+                    <text-field-component :rules="contactRule" v-model="contact" title="ФИО контактного лица" />
+                    <text-field-component :rules="phoneNumberRule" v-model="phoneNumber" title="Номер телефона" />
+                    <text-field-component :rules="emailRule" v-model="email" title="Электронная почта" />
+                    
+                    <FileInputComponent 
+                        title="Карточка предприятия" 
+                    />
+                    
+                    <button-anket
+                        type="submit"
+                        title="Отправить анкету"
+                        color-text="white"
+                        :color="mainColor"
+                    />
 
-        </v-container>
+                </v-form>
+            </v-col>
+            <v-col v-if="width > 1280"></v-col>
+        
+        </v-row>
+
+
     </v-container>
 </template>
 
@@ -269,4 +303,21 @@ export default{
         line-height: 1.5;
         text-align: justify;
     }
+
+    .title_question{
+        text-align: center;
+        font-weight: bold;
+        font-size: 28px;
+    }
+
+    .title_question_mobile{
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .for_this{
+        font-weight: bold;
+    }
+
 </style>
