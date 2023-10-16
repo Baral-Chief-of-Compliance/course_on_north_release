@@ -2,90 +2,141 @@
     <v-container>
         <button-back label="на главную" @my-event="go_back" />
 
-        <anket-title title="Анкета соискателя" />
+        <!-- <anket-title title="Анкета соискателя" />
 
         <anket-text 
             text="Заполните анкету соискателя, указав, какая сфера деятельности, должность и профессия вам интересны."
-        />
+        /> -->
 
-        <v-container>
-            <v-form @submit.prevent="submit">
-                <text-field-component :rules="surnameRule"  title="Фамилия" v-model="surname"/>
-                <text-field-component :rules="nameRule" title="Имя" v-model="name" />
-                <CheckBoxComonent :color="mainColor" title="Отчество отсутствует" v-model="selected" />
-                <text-field-component :rules="patronymicRule" v-if="!selected"  title="Отчество" v-model="patronymic" />
-                <text-field-component title="Возраст" type="number" v-model="age" />
-                <text-field-component :rules="emailRule" title="Электронный адрес" v-model="email"  />
+        <TitleComponent title="Анкета соискателя"/>
 
-                <AddressCardInput  v-model="mail" title="Почтовый адрес" @onOpenDialog="() => dialogAddress = true" />
+        <v-row :class="[ width > 1280 ? 'text_style py-10' : 'text_style_mobile py-10' ]" :style="textStyle" no-gutters justify="center">
+            <v-col v-if="width > 1280"></v-col>
+            <v-col :cols="[ width > 1280 ? 8 : 12 ]">
 
-                <v-dialog
-                    v-model="dialogAddress"
-                    width="auto"
-                >
-                    <address-card :close-dialog="() => dialogAddress = false"   title="Почтовый адрес" v-model="mail" />
-                </v-dialog>
+                <div :class="[ width > 1280 ? 'title_question' : 'title_question_mobile']">Как принять участие в проекте «Курс на Север»</div><br>
 
-                <div class="mt-8"></div>
-                <AddressCardInput  v-model="mailRegistration" title="Адрес регистрации" @onOpenDialog="() => dialogRegister = true" />
-
-                <v-dialog
-                    v-model="dialogRegister"
-                    width="auto"
-                >
-                    <address-card v-model="mailRegistration" :close-dialog="() => dialogRegister = false" title="Адрес регистрации" />
-                </v-dialog>
-
-                <div class="mt-8"></div>
-
-                <text-field-component :rules="mobilePhoneRule" v-model="mobilePhone" title="Номер телефона" />
-                <text-field-component :rules="dreamJobRule" v-model="dreamJob" title="Желаемая профессия" />
-
-                <combobox-component v-model="family" title="Семейное положение" :items="['не замужем', 'замужем', 'холост', 'женат']" />
-                <combobox-component v-model="childrens" title="Дети" :items="['есть', 'нет']" />
-                <combobox-component v-model="education" title="Образование" :items="['среднее', 'среднее профессиональное', 'высшее, высшее - бакалавриат', 'высшее - магистратура']" />
-
-                <text-field-component v-model="nameInstitution" title="Наименование учебного заведения" />
-                <combobox-component v-model="possibilityOfRelocation" title="Возможность переезда в Мурманскую область" :items="['да', 'нет']" />
-                <combobox-component v-model="needForHousing" title="Необходимость жилья" :items="['да', 'нет']" />
-
-
-                <text-field-component v-model="desiredSalaryLevel" title="Желаемый уровень заработной платы" />
-                <text-field-component v-model="generalExperience" title="Общий стаж" />
-                <text-field-component v-model="positionAtLastJob" title="Должность на последнем месте работы" />
-                <text-field-component v-model="additionalInf" title="Дополнительная информация" />
                 
-                <alert-component
-                    v-model="chekboxConfrimationProgramm"
-                    title="Предупреждение" 
-                    text="Настоящим подтверждаю, что являюсь гражданином, обратившимся в рамках реализации проекта «Курс на Север» и прошу оказать содействие в поиске подходящей работы в рамках Постановления Правительства Мурманской области от 28.04.2023 г. № 329-ПП “О службе сопровождения “Курс на Север”"
-                    type="info"
-                    checkbox-label="Подтверждаю"
-                    :rules="chekboxConfrimationProgrammRule"
-                />
+                &nbsp;&nbsp;&nbsp;&nbsp;Рассматриваете Мурманскую область в качестве места для построения карьеры? Предлагаем стать участником проекта «Курс на Север»!<br><br>
+                <span class="for_this">Для этого необходимо:</span><br>
+                <v-row class="d-flex justify-start ml-10">
+                    <v-col cols="1">
+                        <img  class="mt-2" src="@/assets/logo/logo_list_cns.svg" width="40" height="40"/>
+                    </v-col>
 
-                <div class="my-10"></div>
-                <FileInputComponent title="Прикрепить резюме" />
-                
-                <alert-component
-                    v-model="chekboxConfrimationPD"
-                    title="Согласие на обработку персональных данных"
-                    text="Я подтверждаю свое согласие на обработку персональных данных. Я проинформирован о том, что направление данного обращения в государственный орган, орган местного самоуправления или должностному лицу, в компетенцию которых входит решение поставленных в обращении вопросов, не является разглашением сведений, содержащихся в обращении."
-                    type="warning"
-                    checkbox-label="Подтверждаю"
-                    :rules="chekboxConfrimationPDRule"
-                />
+                    <v-col cols="7" :class="[width > 625 ? 'mt-3' : 'mt-3 ml-5'] ">
+                        подать заявку в службу кадрового сопровождения;
+                    </v-col>
+                </v-row>
+                <v-row class="d-flex justify-start ml-10">
+                    <v-col cols="1">
+                        <img  class="mt-2" src="@/assets/logo/logo_list_cns.svg" width="40" height="40"/>
+                    </v-col>
 
-                <button-anket 
-                    type="submit"
-                    title="Отправить анкету" 
-                    color-text="white" 
-                    :color="mainColor"
+                    <v-col cols="7" :class="[width > 625 ? 'mt-3' : 'mt-3 ml-5'] ">
+                        заполнить анкету и прикрепить резюме;
+                    </v-col>
+                </v-row>
 
-                />
-            </v-form>
+                <v-row class="d-flex justify-start ml-10">
+                    <v-col cols="1">
+                        <img  class="mt-2" src="@/assets/logo/logo_list_cns.svg" width="40" height="40"/>
+                    </v-col>
 
-        </v-container>
+                    <v-col cols="7" :class="[width > 625 ? 'mt-3' : 'mt-3 ml-5']">
+                        дать согласие на участие в проекте и обработку персональных данных.
+                    </v-col>
+                </v-row> <br>
+                В течение максимум 5 рабочих дней с вами свяжется куратор и предложит подходящие варианты работы с учетом уровня образования, профессиональных компетенций, опыта работы и ваших пожеланий.<br> 
+
+                <div :class="[ width > 1280 ? 'title_question mt-5' : 'title_question_mobile mt-5']">Пора взять Курс на Север!</div>
+            </v-col>
+            <v-col v-if="width > 1280"></v-col>
+        </v-row>
+
+        <v-row>
+            <v-col v-if="width > 1280"></v-col>
+            <v-col :cols="[ width > 1280 ? 8 : 12 ]">
+                <v-form @submit.prevent="submit">
+                    <text-field-component :rules="surnameRule"  title="Фамилия" v-model="surname"/>
+                    <text-field-component :rules="nameRule" title="Имя" v-model="name" />
+                    <CheckBoxComonent :color="mainColor" title="Отчество отсутствует" v-model="selected" />
+                    <text-field-component :rules="patronymicRule" v-if="!selected"  title="Отчество" v-model="patronymic" />
+                    <text-field-component title="Возраст" type="number" v-model="age" />
+                    <text-field-component :rules="emailRule" title="Электронный адрес" v-model="email"  />
+
+                    <AddressCardInput  v-model="mail" title="Почтовый адрес" @onOpenDialog="() => dialogAddress = true" />
+
+                    <v-dialog
+                        v-model="dialogAddress"
+                        width="auto"
+                    >
+                        <address-card :close-dialog="() => dialogAddress = false"   title="Почтовый адрес" v-model="mail" />
+                    </v-dialog>
+
+                    <div class="mt-8"></div>
+                    <AddressCardInput  v-model="mailRegistration" title="Адрес регистрации" @onOpenDialog="() => dialogRegister = true" />
+
+                    <v-dialog
+                        v-model="dialogRegister"
+                        width="auto"
+                    >
+                        <address-card v-model="mailRegistration" :close-dialog="() => dialogRegister = false" title="Адрес регистрации" />
+                    </v-dialog>
+
+                    <div class="mt-8"></div>
+
+                    <text-field-component :rules="mobilePhoneRule" v-model="mobilePhone" title="Номер телефона" />
+                    <text-field-component :rules="dreamJobRule" v-model="dreamJob" title="Желаемая профессия" />
+
+                    <combobox-component v-model="family" title="Семейное положение" :items="['не замужем', 'замужем', 'холост', 'женат']" />
+                    <combobox-component v-model="childrens" title="Дети" :items="['есть', 'нет']" />
+                    <combobox-component v-model="education" title="Образование" :items="['среднее', 'среднее профессиональное', 'высшее, высшее - бакалавриат', 'высшее - магистратура']" />
+
+                    <text-field-component v-model="nameInstitution" title="Наименование учебного заведения" />
+                    <combobox-component v-model="possibilityOfRelocation" title="Возможность переезда в Мурманскую область" :items="['да', 'нет']" />
+                    <combobox-component v-model="needForHousing" title="Необходимость жилья" :items="['да', 'нет']" />
+
+
+                    <text-field-component v-model="desiredSalaryLevel" title="Желаемый уровень заработной платы" />
+                    <text-field-component v-model="generalExperience" title="Общий стаж" />
+                    <text-field-component v-model="positionAtLastJob" title="Должность на последнем месте работы" />
+                    <text-field-component v-model="additionalInf" title="Дополнительная информация" />
+                    
+                    <alert-component
+                        v-model="chekboxConfrimationProgramm"
+                        title="Предупреждение" 
+                        text="Настоящим подтверждаю, что являюсь гражданином, обратившимся в рамках реализации проекта «Курс на Север» и прошу оказать содействие в поиске подходящей работы в рамках Постановления Правительства Мурманской области от 28.04.2023 г. № 329-ПП “О службе сопровождения “Курс на Север”"
+                        type="info"
+                        checkbox-label="Подтверждаю"
+                        :rules="chekboxConfrimationProgrammRule"
+                    />
+
+                    <div class="my-10"></div>
+                    <FileInputComponent title="Прикрепить резюме" />
+                    
+                    <alert-component
+                        v-model="chekboxConfrimationPD"
+                        title="Согласие на обработку персональных данных"
+                        text="Я подтверждаю свое согласие на обработку персональных данных. Я проинформирован о том, что направление данного обращения в государственный орган, орган местного самоуправления или должностному лицу, в компетенцию которых входит решение поставленных в обращении вопросов, не является разглашением сведений, содержащихся в обращении."
+                        type="warning"
+                        checkbox-label="Подтверждаю"
+                        :rules="chekboxConfrimationPDRule"
+                    />
+
+                    <button-anket 
+                        type="submit"
+                        title="Отправить анкету" 
+                        color-text="white" 
+                        :color="mainColor"
+
+                    />
+                </v-form>
+            </v-col>
+
+            <v-col v-if="width > 1280"></v-col>
+
+        </v-row>
         
     </v-container>
 </template>
@@ -103,6 +154,7 @@ import ButtonAnket from './details/ankets/ButtonAnket.vue';
 import CheckBoxComonent from './details/ankets/CheckBoxComonent.vue';
 import FileInputComponent from './details/ankets/FileInputComponent.vue';
 import AddressCardInput from './details/ankets/AddressCardInput.vue';
+import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
 import { inject, ref } from 'vue';
 
 
@@ -120,7 +172,8 @@ export default{
         ButtonAnket,
         CheckBoxComonent,
         FileInputComponent,
-        AddressCardInput
+        AddressCardInput,
+        TitleComponent
     },
 
     setup(){
@@ -280,6 +333,8 @@ export default{
             }
         ]
 
+        const width = inject("width");
+
         
         return { 
                     mainColor, 
@@ -313,7 +368,8 @@ export default{
                     chekboxConfrimationProgrammRule,
                     chekboxConfrimationPDRule,
                     mailArea,
-                    mailRegistration
+                    mailRegistration,
+                    width
                 }
     },
 
