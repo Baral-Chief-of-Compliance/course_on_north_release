@@ -155,6 +155,7 @@ import CheckBoxComonent from './details/ankets/CheckBoxComonent.vue';
 import FileInputComponent from './details/ankets/FileInputComponent.vue';
 import AddressCardInput from './details/ankets/AddressCardInput.vue';
 import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
+import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
 import { inject, ref } from 'vue';
 
 
@@ -414,6 +415,7 @@ export default{
 
     mounted(){
         this.get_start()
+        set_part_of_navbar(this.$route.name)
     }
 }
 </script>

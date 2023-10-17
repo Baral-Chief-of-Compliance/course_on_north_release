@@ -112,7 +112,9 @@ export default{
         go_to_menu_punkt(refName){
 
             if (get_name_part_of_navbar() != "TestHome_1"){
+                // window.scrollTo({ top: 0, behavior: 'smooth'})
                 this.$router.push({name: "TestHome_1"})
+                window.scrollTo({ top: 0})
                 this.drawer = false;
                 setTimeout(() => {
                     const element = document.getElementById(refName);

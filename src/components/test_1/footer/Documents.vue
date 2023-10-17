@@ -8,8 +8,10 @@
             <v-icon color="white" class="mr-3" icon="mdi-bookmark"></v-icon>
         </v-col>
 
-        <v-col  cols="8" class="personal_data">
+        <v-col   cols="8" class="personal_data">
+            <div id="policy-link-style" @click="downloadFile(pdfUrl, pdfFileName)">
                 Политика в отношении обработки персональных данных
+            </div>
         </v-col> 
     </v-row>
 
@@ -32,17 +34,20 @@
 </style>
 
 
-<script>
+<script setup>
 import { downloadFile } from '@/tools/download';
 
 
-export default{
+const pdfUrl = '/public/data/policyPD.pdf';
+const pdfFileName = 'Политика о персональных данных ГОБУ ЦЗН Мурманской области';
 
-    data(){
-        return{
-            pdfUrl: '@/data/test.pdf',
-            pdfFileName: 'test.pdf'
-        }
-    }
-}
 </script>
+
+<style scoped>
+
+    #policy-link-style:hover{
+        cursor: pointer;
+        color: #D1E0E6;
+    }
+
+</style>

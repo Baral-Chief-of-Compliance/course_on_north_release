@@ -57,6 +57,7 @@
 import ButtonBack from './details/ButtonBack.vue';
 import AnketTitleVue from './details/ankets/AnketTitle.vue';
 import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
+import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
 import { inject } from 'vue';
 
 
@@ -166,6 +167,7 @@ export default{
 
     mounted(){
         this.get_start();
+        set_part_of_navbar(this.$route.name)
     }
 }
 </script>

@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
+
 import json from '@/data/news.json'
 
     export default{
@@ -35,6 +37,7 @@ import json from '@/data/news.json'
         },
 
         mounted(){
+            set_part_of_navbar(this.$route.name)
             this.get_int_of_news()
         }
     }

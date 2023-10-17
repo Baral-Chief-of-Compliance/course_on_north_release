@@ -123,8 +123,8 @@ import VacanciesCard from './details/ankets/VacanciesCard.vue';
 import ButtonAnket from './details/ankets/ButtonAnket.vue';
 import AddressCardInput from './details/ankets/AddressCardInput.vue';
 import FileInputComponent from './details/ankets/FileInputComponent.vue';
-import TitleComponent from '@/components/test_1/details/TitleComponents.vue'
-
+import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
+import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
 import { ref, inject } from 'vue';
 
 
@@ -285,6 +285,7 @@ export default{
 
     mounted(){
         this.get_start()
+        set_part_of_navbar(this.$route.name)
     }
 }
 </script>

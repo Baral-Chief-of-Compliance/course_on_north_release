@@ -36,7 +36,7 @@
                     title="Скачать таблицу"
                     color-text="white"
                     :color="excelColor"
-                    @click="downloadFile('/public/data/primer.xls', 'Пример заполнения таблицы')"
+                    @click="downloadFile('/public/data/exampleVacancyRegistration.xls', 'Пример заполнения таблицы')"
                 />
 
             </v-alert>
