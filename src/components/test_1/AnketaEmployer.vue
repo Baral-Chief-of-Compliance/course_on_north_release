@@ -60,14 +60,19 @@
             <v-col :cols="[ width > 1280 ? 8 : 12 ]">
                 <v-form>
                     <text-field-component v-model="nameCompany" title="Полное наименование" :rules="nameCompanyRule" />
-                    <address-card-input v-model="lawMail" class="mt-5" title="Юридеский адрес" @onOpenDialog="() => dialogEntityAddress = true "/>
+
+                    <div class="vue-truncate-html-example">
+                        <vue-dadata placeholder="Юридеский адрес" v-model="Address" token="fca34d3a902cf7adafe0bdda96d80ddac0e0fb46" />
+                    </div>
+
+                    <!-- <address-card-input v-model="lawMail" class="mt-5" title="Юридеский адрес" @onOpenDialog="() => dialogEntityAddress = true "/>
                     
                     <v-dialog
                         v-model="dialogEntityAddress"
                         width="auto" 
                     >
                         <address-card :close-dialog="() => dialogEntityAddress = false" title="Юридический адрес" v-model="lawMail" />
-                    </v-dialog>
+                    </v-dialog> -->
 
                     <button-anket 
                         @click="dialogSendVacancies = true"
@@ -127,6 +132,9 @@ import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
 import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
 import { ref, inject } from 'vue';
 
+import { VueDadata } from 'vue-dadata';
+import 'vue-dadata/dist/style.css';
+
 
 export default{
 
@@ -144,11 +152,14 @@ export default{
         ButtonAnket,
         AddressCardInput,
         FileInputComponent,
-        TitleComponent
+        TitleComponent,
+        VueDadata
     },
 
     setup(){
         let nameCompany = ref("")
+
+        let Address = ref("")
 
         const lawMail = ref({
             country: null,
@@ -244,7 +255,8 @@ export default{
             contactRule,
             phoneNumberRule,
             emailRule,
-            width
+            width,
+            Address
         }
 
     },

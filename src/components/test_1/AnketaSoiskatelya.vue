@@ -65,24 +65,33 @@
                     <text-field-component title="Возраст" type="number" v-model="age" />
                     <text-field-component :rules="emailRule" title="Электронный адрес" v-model="email"  />
 
-                    <AddressCardInput  v-model="mail" title="Почтовый адрес" @onOpenDialog="() => dialogAddress = true" />
+                    <!-- <AddressCardInput  v-model="mail" title="Почтовый адрес" @onOpenDialog="() => dialogAddress = true" />
 
                     <v-dialog
                         v-model="dialogAddress"
                         width="auto"
                     >
                         <address-card :close-dialog="() => dialogAddress = false"   title="Почтовый адрес" v-model="mail" />
-                    </v-dialog>
+                    </v-dialog> -->
 
+                    <div class="vue-truncate-html-example mt-5">
+                        <vue-dadata placeholder="Почтовый адрес" v-model="mailArea" token="fca34d3a902cf7adafe0bdda96d80ddac0e0fb46" />
+                    </div>
+                    
                     <div class="mt-8"></div>
-                    <AddressCardInput  v-model="mailRegistration" title="Адрес регистрации" @onOpenDialog="() => dialogRegister = true" />
+                    <!-- <AddressCardInput  v-model="mailRegistration" title="Адрес регистрации" @onOpenDialog="() => dialogRegister = true" />
 
                     <v-dialog
                         v-model="dialogRegister"
                         width="auto"
                     >
                         <address-card v-model="mailRegistration" :close-dialog="() => dialogRegister = false" title="Адрес регистрации" />
-                    </v-dialog>
+                    </v-dialog> -->
+
+                    <div class="vue-truncate-html-example mt-5">
+                        <vue-dadata placeholder="Адрес регистрации" v-model="mailRegistration" token="fca34d3a902cf7adafe0bdda96d80ddac0e0fb46" />
+                    </div>
+
 
                     <div class="mt-8"></div>
 
@@ -114,6 +123,8 @@
 
                     <div class="my-10"></div>
                     <FileInputComponent title="Прикрепить резюме" />
+
+
                     
                     <alert-component
                         v-model="chekboxConfrimationPD"
@@ -156,7 +167,10 @@ import FileInputComponent from './details/ankets/FileInputComponent.vue';
 import AddressCardInput from './details/ankets/AddressCardInput.vue';
 import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
 import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
-import { inject, ref } from 'vue';
+import { inject, ref} from 'vue';
+
+import { VueDadata } from 'vue-dadata';
+import 'vue-dadata/dist/style.css';
 
 
 export default{
@@ -174,7 +188,8 @@ export default{
         CheckBoxComonent,
         FileInputComponent,
         AddressCardInput,
-        TitleComponent
+        TitleComponent,
+        VueDadata
     },
 
     setup(){
@@ -186,56 +201,58 @@ export default{
         let age = ref("")
         let email = ref("")
         let mailArea = ref("")
-        const mail = ref({
-            country: null,
-            subjectRF: null,
-            town: null,
-            street: null,
-            building: null,
-            apartment: null,
-            index: null,
-            additionalInfo: null,
+        let mailRegistration = ref("")
 
-            toString: function(){
-                let value = "";
+        // const mail = ref({
+        //     country: null,
+        //     subjectRF: null,
+        //     town: null,
+        //     street: null,
+        //     building: null,
+        //     apartment: null,
+        //     index: null,
+        //     additionalInfo: null,
 
-                value = `${(this.country === null)? "" : this.country }` +
-                        `${(this.subjectRF === null) ? "" : ", " + this.subjectRF }` +
-                        `${(this.town === null) ? "" : ", " + this.town }` +
-                        `${(this.street === null) ? "" : ", " + this.street }` +
-                        `${(this.building === null) ? "" : ", " + this.building }` +
-                        `${(this.apartment === null) ? "" : ", " + this.apartment }` +
-                        `${(this.index === null) ? "" : ", " + this.index }` +
-                        `${(this.additionalInfo === null) ? "" : ", " + this.additionalInfo }` 
-                return value
-            }
-        })
+        //     toString: function(){
+        //         let value = "";
+
+        //         value = `${(this.country === null)? "" : this.country }` +
+        //                 `${(this.subjectRF === null) ? "" : ", " + this.subjectRF }` +
+        //                 `${(this.town === null) ? "" : ", " + this.town }` +
+        //                 `${(this.street === null) ? "" : ", " + this.street }` +
+        //                 `${(this.building === null) ? "" : ", " + this.building }` +
+        //                 `${(this.apartment === null) ? "" : ", " + this.apartment }` +
+        //                 `${(this.index === null) ? "" : ", " + this.index }` +
+        //                 `${(this.additionalInfo === null) ? "" : ", " + this.additionalInfo }` 
+        //         return value
+        //     }
+        // })
 
 
-        const mailRegistration = ref({
-            country: null,
-            subjectRF: null,
-            town: null,
-            street: null,
-            building: null,
-            apartment: null,
-            index: null,
-            additionalInfo: null,
+        // const mailRegistration = ref({
+        //     country: null,
+        //     subjectRF: null,
+        //     town: null,
+        //     street: null,
+        //     building: null,
+        //     apartment: null,
+        //     index: null,
+        //     additionalInfo: null,
 
-            toString: function(){
-                let value = "";
+        //     toString: function(){
+        //         let value = "";
 
-                value = `${(this.country === null)? "" : this.country }` +
-                        `${(this.subjectRF === null) ? "" : ", " + this.subjectRF }` +
-                        `${(this.town === null) ? "" : ", " + this.town }` +
-                        `${(this.street === null) ? "" : ", " + this.street }` +
-                        `${(this.building === null) ? "" : ", " + this.building }` +
-                        `${(this.apartment === null) ? "" : ", " + this.apartment }` +
-                        `${(this.index === null) ? "" : ", " + this.index }` +
-                        `${(this.additionalInfo === null) ? "" : ", " + this.additionalInfo }` 
-                return value
-            }
-        })
+        //         value = `${(this.country === null)? "" : this.country }` +
+        //                 `${(this.subjectRF === null) ? "" : ", " + this.subjectRF }` +
+        //                 `${(this.town === null) ? "" : ", " + this.town }` +
+        //                 `${(this.street === null) ? "" : ", " + this.street }` +
+        //                 `${(this.building === null) ? "" : ", " + this.building }` +
+        //                 `${(this.apartment === null) ? "" : ", " + this.apartment }` +
+        //                 `${(this.index === null) ? "" : ", " + this.index }` +
+        //                 `${(this.additionalInfo === null) ? "" : ", " + this.additionalInfo }` 
+        //         return value
+        //     }
+        // })
 
         let mobilePhone = ref("")
         let dreamJob = ref("")
@@ -336,7 +353,6 @@ export default{
 
         const width = inject("width");
 
-        
         return { 
                     mainColor, 
                     surname, 
@@ -344,7 +360,6 @@ export default{
                     patronymic,
                     age,
                     email,
-                    mail,
                     mobilePhone,
                     dreamJob,
                     family,
@@ -370,7 +385,7 @@ export default{
                     chekboxConfrimationPDRule,
                     mailArea,
                     mailRegistration,
-                    width
+                    width,
                 }
     },
 
@@ -401,9 +416,6 @@ export default{
 
         async submit (event) {
             const results = await event
-
-            console.log(JSON.stringify(results, null, 2))
-
 
             if (results.valid){
                 console.log('it is work')
