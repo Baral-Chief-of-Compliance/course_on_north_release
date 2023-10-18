@@ -20,11 +20,11 @@ import NewsInf from '@/components/test_1/NewsInf.vue';
 const routes = [
 
   {
-    path: '/test', 
+    path: '/', 
     component: DefaultTest,
     children: [
       {
-        path: '/test',
+        path: '/',
         name: 'TestHome_1',
         component: Test_1
       },
@@ -50,11 +50,11 @@ const routes = [
         component: News
       },
 
-      {
-        path: '/news/:id',
-        name: 'NewsInf',
-        component: NewsInf
-      },
+      // {
+      //   path: '/news/:id',
+      //   name: 'NewsInf',
+      //   component: NewsInf
+      // },
 
       {
         path: '/thanks-for-anketa',
@@ -102,11 +102,11 @@ const routes = [
       // }
     ]
   },
-  {
-    path: "/",
-    name: "stumb",
-    component: stub
-  }
+  // {
+  //   path: "/",
+  //   name: "stumb",
+  //   component: stub
+  // }
 ]
 
 const router = createRouter({

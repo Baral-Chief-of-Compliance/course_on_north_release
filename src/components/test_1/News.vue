@@ -6,7 +6,9 @@
 
         <v-row>
             <v-col v-if="width >= 1280"></v-col>
-            <v-col :cols="[width >= 1280 ? 8 : 12]">
+            
+            
+            <v-col v-if="state.news.length != 0" :cols="[width >= 1280 ? 8 : 12]">
 
                 <template v-for="n in state.news" >
                     <v-hover>
@@ -17,7 +19,7 @@
                                 v-if="n.page === page"
                                 v-bind="props"
                                 :color="isHovering ? '#66B9E8' : undefined"
-                                @click="this.$router.push({name: 'NewsInf', params: {id: n.id}})"
+                                
                             >
                                 <v-card-text>
                                     <v-row>
@@ -43,6 +45,7 @@
                 </template>
 
                 <v-pagination
+                    v-if="state.news.length != 0"
                     class="mt-5"
                     v-model="page"
                     :length="state.pages_county"
@@ -51,6 +54,10 @@
                 >
 
                 </v-pagination>
+            </v-col>
+
+            <v-col :class="[width > 1280 ? 'news_isapsent' : 'news_isapsent_mobile' ]" v-else :cols="[width >= 1280 ? 8 : 12]">
+                Новостей пока нет
             </v-col>
             <v-col v-if="width >= 1280" ></v-col>
         </v-row>
@@ -176,4 +183,20 @@ export default{
     color: gray;
     font-family: "MontserratMedium";
 }
+
+.news_isapsent{
+    font-family: "MontserratMedium";
+    font-size: 30px; 
+    text-align: center;
+}
+
+.news_isapsent_mobile{
+    font-family: "MontserratMedium";
+    font-size: 18px; 
+    text-align: center; 
+}
+
 </style>
+
+
+<!-- @click="this.$router.push({name: 'NewsInf', params: {id: n.id}})" -->
