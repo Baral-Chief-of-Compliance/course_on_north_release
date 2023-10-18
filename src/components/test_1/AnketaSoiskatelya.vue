@@ -93,18 +93,119 @@
                     </div>
 
 
+
                     <div class="mt-8"></div>
 
                     <text-field-component :rules="mobilePhoneRule" v-model="mobilePhone" title="Номер телефона" />
                     <text-field-component :rules="dreamJobRule" v-model="dreamJob" title="Желаемая профессия" />
 
-                    <combobox-component v-model="family" title="Семейное положение" :items="['не замужем', 'замужем', 'холост', 'женат']" />
-                    <combobox-component v-model="childrens" title="Дети" :items="['есть', 'нет']" />
-                    <combobox-component v-model="education" title="Образование" :items="['среднее', 'среднее профессиональное', 'высшее, высшее - бакалавриат', 'высшее - магистратура']" />
+                    <!-- <combobox-component v-model="family" title="Семейное положение" :items="['не замужем', 'замужем', 'холост', 'женат']" /> -->
+                    
+                    <v-combobox 
+                        v-model="family" 
+                        variant="solo-filled"  
+                        :color="mainColor"
+                        :items="['не замужем', 'замужем', 'холост', 'женат']"
+                        label="Семейное положение"
+                        class="text_field_label"
+                    >
+                        <!-- <template v-slot:item="{ index, item }">
+                            <v-list>
+                                <v-list-item @click="family = item">
+                                    <span class="text_field_label">{{ item.title }}</span>
+                                </v-list-item>
+                            </v-list>
+                        </template> -->
+
+                    </v-combobox>
+
+
+                    <!-- <combobox-component v-model="childrens" title="Дети" :items="['есть', 'нет']" /> -->
+
+                    <v-combobox 
+                        v-model="childrens" 
+                        variant="solo-filled"  
+                        :color="mainColor"
+                        :items="['есть', 'нет']"
+                        label="Дети"
+                        class="text_field_label"
+                    >
+                        <!-- <template v-slot:item="{ index, item }">
+                            <v-list>
+                                <v-list-item @click="childrens = item">
+                                    <span class="text_field_label">{{ item.title }}</span>
+                                </v-list-item>
+                            </v-list>
+                        </template> -->
+
+                    </v-combobox>
+
+                    <!-- <combobox-component v-model="education" title="Образование" :items="['среднее', 'среднее профессиональное', 'высшее, высшее - бакалавриат', 'высшее - магистратура']" /> -->
+
+                    <v-combobox 
+                        v-model="education" 
+                        variant="solo-filled"  
+                        :color="mainColor"
+                        :items="['среднее', 'среднее профессиональное', 'высшее, высшее - бакалавриат', 'высшее - магистратура']"
+                        label="Образование"
+                        class="text_field_label"
+                    >
+                        <!-- <template v-slot:item="{ index, item }">
+                            <v-list>
+                                <v-list-item @click="education = item">
+                                    <span class="text_field_label">{{ item.title }}</span>
+                                </v-list-item>
+                            </v-list>
+                        </template> -->
+
+                    </v-combobox>
 
                     <text-field-component v-model="nameInstitution" title="Наименование учебного заведения" />
-                    <combobox-component v-model="possibilityOfRelocation" title="Возможность переезда в Мурманскую область" :items="['да', 'нет']" />
-                    <combobox-component v-model="needForHousing" title="Необходимость жилья" :items="['да', 'нет']" />
+
+                    <!-- <combobox-component v-model="possibilityOfRelocation" title="Возможность переезда в Мурманскую область" :items="['да', 'нет']" /> -->
+
+                    <v-combobox 
+                        v-model="possibilityOfRelocation" 
+                        variant="solo-filled"  
+                        :color="mainColor"
+                        :items="['да', 'нет']"
+                        label="Возможность переезда в Мурманскую область"
+                        class="text_field_label"
+                    >
+                        <!-- <template v-slot:item="{ index, item }">
+                            <v-list>
+                                <v-list-item @click="possibilityOfRelocation = item">
+                                    <span class="text_field_label">{{ item.title }}</span>
+                                </v-list-item>
+                            </v-list>
+                        </template> -->
+                        <!-- <template slot="selection" :slot-scope="{item, index}">
+                            <span class="text_field_label">{{ item }}</span>
+                        </template> -->
+
+                    </v-combobox>
+
+                    <!-- <combobox-component v-model="needForHousing" title="Необходимость жилья" :items="['да', 'нет']" /> -->
+
+                    <v-combobox 
+                        v-model="needForHousing" 
+                        variant="solo-filled"  
+                        :color="mainColor"
+                        :items="['да', 'нет']"
+                        label="Необходимость жилья"
+                        class="text_field_label"
+                    >
+                        <!-- <template v-slot:selection="items" >
+                            <v-list>
+                                
+                                    <v-list-item @click:close="true" >
+                                        <span  class="text_field_label">{{ items.item.title }}</span>
+                                    </v-list-item>
+                                
+                            </v-list>
+                        </template> -->
+                        <!-- @click="needForHousing = item" -->
+                    </v-combobox>
 
 
                     <text-field-component v-model="desiredSalaryLevel" title="Желаемый уровень заработной платы" />
@@ -352,6 +453,9 @@ export default{
         ]
 
         const width = inject("width");
+        function sendData(){
+            console.log("function from composition api")
+        }
 
         return { 
                     mainColor, 
@@ -386,6 +490,7 @@ export default{
                     mailArea,
                     mailRegistration,
                     width,
+                    sendData
                 }
     },
 
@@ -419,8 +524,10 @@ export default{
 
             if (results.valid){
                 console.log('it is work')
+                sendData()
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth'})
+                this.sendData()
             }
         },
     },
@@ -438,4 +545,7 @@ export default{
     color: white
 }
 
+.text_field_label{
+        font-family: "MontserratMedium";
+}
 </style>

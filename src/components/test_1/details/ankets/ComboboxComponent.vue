@@ -44,7 +44,7 @@ const valueComobox = computed({
 
 </script>
 
-<style scoped>
+<style>
     .text_field_label{
         font-family: "MontserratMedium";
     }
