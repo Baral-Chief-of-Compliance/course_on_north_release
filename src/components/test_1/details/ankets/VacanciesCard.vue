@@ -11,7 +11,7 @@
         </template>
 
         <template v-slot:title>
-            <div :class="width > 420 ? 'title' : 'title-mobile'" :style="{color: addColor}">
+            <div :class="width > 420 ? 'title-vacancies-card' : 'title-mobile-vacancies-card'" :style="{color: addColor}">
                 {{ props.title }}
             </div>
         </template>
@@ -23,12 +23,12 @@
                 variant="tonal"
             >   
                 <template v-slot:title>
-                    <div class="alert-title">
+                    <div class="alert-title-vacancies-card">
                         Пример оформления вакансий
                     </div>
                 </template>
 
-                <div class="alert-text mt-5">
+                <div class="alert-text-vacancies-card mt-5">
                     Для примера оформления вакансий необходимо скачать таблицу.
                 </div>
 
@@ -70,31 +70,31 @@ const props = defineProps({
 
 </script>
 
-<style scoped>
- .title{
+<style>
+ .title-vacancies-card{
     font-family: "CorkiRegular";
     text-transform: uppercase;
     font-size: 32px;
  }
 
- .title-mobile{
+ .title-mobile-vacancies-card{
     font-family: "CorkiRegular";
     text-transform: uppercase;
     font-size: 24px;
  }
 
- .btn-text{
+ .btn-text-vacancies-card{
     font-family: "MontserratMedium";
     font-weight: bold;
     font-size: 18px;
  }
 
- .alert-title{
+ .alert-title-vacancies-card{
     font-family: "MontserratMedium";
     font-weight: bold;
  }
 
- .alert-text{
+ .alert-text-vacancies-card{
     font-family: "MontserratMedium";
  }
 </style>

@@ -58,11 +58,11 @@
         <v-row>
             <v-col v-if="width > 1280"></v-col>
             <v-col :cols="[ width > 1280 ? 8 : 12 ]">
-                <v-form>
+                <v-form @submit.prevent="submit">
                     <text-field-component v-model="nameCompany" title="Полное наименование" :rules="nameCompanyRule" />
 
                     <div class="vue-truncate-html-example">
-                        <vue-dadata placeholder="Юридеский адрес" v-model="Address" token="fca34d3a902cf7adafe0bdda96d80ddac0e0fb46" />
+                        <vue-dadata placeholder="Юридеский адрес" v-model="Address" :token="dadata_token" />
                     </div>
 
                     <!-- <address-card-input v-model="lawMail" class="mt-5" title="Юридеский адрес" @onOpenDialog="() => dialogEntityAddress = true "/>
@@ -86,17 +86,93 @@
                         v-model="dialogSendVacancies"
                         width="auto"
                     >
-                        <vacancies-card :close-dialog="() => dialogSendVacancies = false" title="Прикрепить вакансии" />
+                        <!-- <vacancies-card :close-dialog="() => dialogSendVacancies = false" title="Прикрепить вакансии" /> -->
+
+                            <v-card :width="(width) > 1280 ? (width / 2) : (width-50)">
+                                <template v-slot:prepend>
+                                    <v-icon :color="mainColor" icon="mdi-folder-account" size="x-large"></v-icon>
+                                </template>
+
+                                <template v-slot:append>
+                                    <v-btn @click="() => dialogSendVacancies = false" variant="text" color="red">
+                                        <v-icon  size="x-large" color="red" icon="mdi-close"></v-icon>
+                                    </v-btn> 
+                                </template>
+
+                                <template v-slot:title>
+                                    <div :class="width > 420 ? 'title-vacancies-card' : 'title-mobile-vacancies-card'" :style="{color: addColor}">
+                                        Прикрепить вакансии
+                                    </div>
+                                </template>
+
+                                <v-card-text class="mt-5">
+                                    <v-alert 
+                                        type="warning"
+                                        border="start"
+                                        variant="tonal"
+                                    >   
+                                        <template v-slot:title>
+                                            <div class="alert-title-vacancies-card">
+                                                Пример оформления вакансий
+                                            </div>
+                                        </template>
+
+                                        <div class="alert-text-vacancies-card mt-5">
+                                            Для примера оформления вакансий необходимо скачать таблицу.
+                                        </div>
+
+                                        <ButtonAnket 
+                                            title="Скачать таблицу"
+                                            color-text="white"
+                                            :color="excelColor"
+                                            @click="downloadFile('/public/data/exampleVacancyRegistration.xls', 'Пример заполнения таблицы')"
+                                        />
+
+                                    </v-alert>
+
+                                    <!-- <FileInputComponent 
+                                        title="Прикрепить вакансии" 
+                                    /> -->
+
+                                    <v-file-input 
+                                        accept="application/vnd.ms-excel"
+                                        variant="solo-filled"
+                                        label="Прикрепить вакансии"
+                                        :color="mainColor"
+                                        class="text_field_label mt-5 mb-5"
+                                        @change="onVacanciesSelected"
+                                        
+                                    >
+                                    </v-file-input>
+
+
+                                </v-card-text>
+                            </v-card>
+
+
                     </v-dialog>
 
                     <text-field-component :rules="contactRule" v-model="contact" title="ФИО контактного лица" />
                     <text-field-component :rules="phoneNumberRule" v-model="phoneNumber" title="Номер телефона" />
                     <text-field-component :rules="emailRule" v-model="email" title="Электронная почта" />
                     
-                    <FileInputComponent 
+                    <!-- <FileInputComponent 
                         title="Карточка предприятия" 
-                    />
+                    /> -->
+
+                    <v-file-input 
+                        accept="application/pdf"
+                        variant="solo-filled"
+                        label="Карточка предприятия"
+                        :color="mainColor"
+                        class="text_field_label mt-5 mb-5"
+                        @change="onCompanyCardSelected"
+                        
+                    >
+                    </v-file-input>
                     
+                    <!-- @change="onCompanyCardSelected" -->
+
                     <button-anket
                         type="submit"
                         title="Отправить анкету"
@@ -110,7 +186,8 @@
         
         </v-row>
 
-
+        {{ this.sendre_api }}
+        {{ this.Vacancies }}
     </v-container>
 </template>
 
@@ -131,6 +208,7 @@ import FileInputComponent from './details/ankets/FileInputComponent.vue';
 import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
 import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
 import { ref, inject } from 'vue';
+import { downloadFile } from '@/tools/download';
 
 import { VueDadata } from 'vue-dadata';
 import 'vue-dadata/dist/style.css';
@@ -243,6 +321,9 @@ export default{
             }
         ]
 
+        const dadata_token = import.meta.env.VITE_DADATA_API_KEY
+        const sendre_api = import.meta.env.VITE_ADDRESS_SMTP_SENDER
+
         return {
             nameCompany,
             lawMail,
@@ -256,7 +337,10 @@ export default{
             phoneNumberRule,
             emailRule,
             width,
-            Address
+            Address,
+            downloadFile,
+            dadata_token,
+            sendre_api
         }
 
     },
@@ -265,6 +349,8 @@ export default{
         return{
             dialogEntityAddress: false,
             dialogSendVacancies: false,
+            Vacancies: "",
+            CompanyCard: ""
         }
     },
 
@@ -277,18 +363,31 @@ export default{
             window.scrollTo({ top: 0, behavior: 'smooth'})
         },
 
-        send_anketa(){
-            this.$router.push({name: 'ThanksAnketa'})
+        onVacanciesSelected(event){
+            this.Vacancies = event.target.files[0]
+        },
+
+        onCompanyCardSelected(event){
+            this.CompanyCard = event.target.files[0]
         },
 
 
         async submit (event){
             const results = await event
 
-            console.log(JSON.stringify(results, null, 2))
-
             if (results.valid){
-                console.log('it is work')
+                const fd = new FormData();
+                fd.append("nameCompany", this.nameCompany)
+                fd.append("Address", this.Address)
+                fd.append("Vacancies", this.Vacancies, this.Vacancies.name)
+                fd.append("contact", this.contact)
+                fd.append("phoneNumber", this.phoneNumber)
+                fd.append("email", this.email)
+                fd.append("CompanyCard", this.CompanyCard, this.CompanyCard.name)
+
+                axios.post(`${this.sendre_api}anketa_employer`, fd)
+
+                this.$router.push({name: 'ThanksAnketa'})
             } else{
                 window.scrollTo({ top: 0, behavior: 'smooth'})
             }

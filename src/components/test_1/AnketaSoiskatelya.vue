@@ -75,7 +75,7 @@
                     </v-dialog> -->
 
                     <div class="vue-truncate-html-example mt-5">
-                        <vue-dadata placeholder="Почтовый адрес" v-model="mailArea" token="fca34d3a902cf7adafe0bdda96d80ddac0e0fb46" />
+                        <vue-dadata placeholder="Почтовый адрес" v-model="mailArea" :token="dadata_token" />
                     </div>
                     
                     <div class="mt-8"></div>
@@ -89,7 +89,7 @@
                     </v-dialog> -->
 
                     <div class="vue-truncate-html-example mt-5">
-                        <vue-dadata placeholder="Адрес регистрации" v-model="mailRegistration" token="fca34d3a902cf7adafe0bdda96d80ddac0e0fb46" />
+                        <vue-dadata placeholder="Адрес регистрации" v-model="mailRegistration" :token="dadata_token" />
                     </div>
 
 
@@ -226,6 +226,7 @@
                     <!-- <FileInputComponent title="Прикрепить резюме" /> -->
 
                     <v-file-input 
+                        accept="application/pdf"
                         variant="solo-filled"
                         label="Прикрепить резюме"
                         :color="mainColor"
@@ -260,6 +261,7 @@
         </v-row>
         
     </v-container>
+
 </template>
 
 <script>
@@ -467,6 +469,9 @@ export default{
         //     console.log("function from composition api")
         // }
 
+        const dadata_token = import.meta.env.VITE_DADATA_API_KEY
+        const sendre_api = import.meta.env.VITE_ADDRESS_SMTP_SENDER
+
         return { 
                     mainColor, 
                     surname, 
@@ -500,6 +505,8 @@ export default{
                     mailArea,
                     mailRegistration,
                     width,
+                    dadata_token,
+                    sendre_api
                 }
     },
 
@@ -559,7 +566,7 @@ export default{
                 fd.append("additionalInf", this.additionalInf);
                 fd.append("summary", this.summary, this.summary.name);
 
-                axios.post("http://127.0.0.1:5000/API/v1.0/anketa_soiskatel", fd)
+                axios.post(`${this.sendre_api}anketa_soiskatel`, fd)
 
                 this.$router.push({name: 'ThanksAnketa'})
                 
