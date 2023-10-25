@@ -19,6 +19,7 @@
                                 v-if="n.page === page"
                                 v-bind="props"
                                 :color="isHovering ? '#66B9E8' : undefined"
+                                @click="this.$router.push({name: 'NewsInf', params: {id: n.id}})"
                                 
                             >
                                 <v-card-text>
@@ -199,4 +200,4 @@ export default{
 </style>
 
 
-<!-- @click="this.$router.push({name: 'NewsInf', params: {id: n.id}})" -->
+

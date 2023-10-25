@@ -125,7 +125,7 @@
                                             title="Скачать таблицу"
                                             color-text="white"
                                             :color="excelColor"
-                                            @click="downloadFile('/public/data/exampleVacancyRegistration.xls', 'Пример заполнения таблицы')"
+                                            @click="downloadExampleVacancyRegistration()"
                                         />
 
                                     </v-alert>
@@ -186,8 +186,6 @@
         
         </v-row>
 
-        {{ this.sendre_api }}
-        {{ this.Vacancies }}
     </v-container>
 </template>
 
@@ -324,6 +322,28 @@ export default{
         const dadata_token = import.meta.env.VITE_DADATA_API_KEY
         const sendre_api = import.meta.env.VITE_ADDRESS_SMTP_SENDER
 
+        function downloadExampleVacancyRegistration(){
+            axios({
+                url: `${sendre_api}example_vacancy_registration`, //your url
+                method: 'GET',
+                responseType: 'blob', // important
+            }).then((response) => {
+                // create file link in browser's memory
+                const href = URL.createObjectURL(response.data);
+
+                // create "a" HTML element with href to file & click
+                const link = document.createElement('a');
+                link.href = href;
+                link.setAttribute('download', 'Пример заполнения таблицы.xlsx'); //or any other extension
+                document.body.appendChild(link);
+                link.click();
+
+                // clean up "a" element & remove ObjectURL
+                document.body.removeChild(link);
+                URL.revokeObjectURL(href);
+            });
+        }
+
         return {
             nameCompany,
             lawMail,
@@ -340,7 +360,8 @@ export default{
             Address,
             downloadFile,
             dadata_token,
-            sendre_api
+            sendre_api,
+            downloadExampleVacancyRegistration
         }
 
     },
