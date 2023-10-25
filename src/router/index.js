@@ -50,11 +50,11 @@ const routes = [
         component: News
       },
 
-      // {
-      //   path: '/news/:id',
-      //   name: 'NewsInf',
-      //   component: NewsInf
-      // },
+      {
+        path: '/news/:id',
+        name: 'NewsInf',
+        component: NewsInf
+      },
 
       {
         path: '/thanks-for-anketa',

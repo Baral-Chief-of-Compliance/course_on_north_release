@@ -87,7 +87,7 @@ export default{
         })
 
         function getData(){
-            axios.get(`${URL_NEWS}news/`)
+            axios.get(`${URL_NEWS}news`)
             .then((response) => {
                 state.news = response.data.news;
                 state.pages_county = response.data.pages_county
@@ -152,6 +152,7 @@ export default{
     font-weight: bold;
     font-size: 25px;
     font-family: "MontserratMedium";
+    line-height: 30px;
 }
 
 .news_label_mobile{
