@@ -135,7 +135,7 @@
                                     /> -->
 
                                     <v-file-input 
-                                        accept="application/vnd.ms-excel"
+                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                                         variant="solo-filled"
                                         label="Прикрепить вакансии"
                                         :color="mainColor"
