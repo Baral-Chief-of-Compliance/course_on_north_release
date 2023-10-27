@@ -10,8 +10,8 @@
             
             <v-col v-if="state.news.length != 0" :cols="[width >= 1280 ? 8 : 12]">
 
-                <template v-for="n in state.news" >
-                    <v-hover>
+                <template v-for="(n, index) in state.news" >
+                    <v-hover v-if="width > 659">
                         <template v-slot:default="{ isHovering, props }">
                             <v-card
                                 height="250"
@@ -43,6 +43,57 @@
                             </v-card>
                         </template>
                     </v-hover>
+                    
+                    <!-- для мобильных версий -->
+                            <v-card
+                                class="mx-auto mb-5"
+                                max-width="344"
+                                v-if="width <= 659"
+                            >
+                                <v-img
+                                :src="n.photo_preview_news"
+                                height="200px"
+                                cover
+                                ></v-img>
+
+                                <v-card-text>
+                                    <span :style="{color: mainColor}" class="news_label_mini">{{ n.title }}</span>
+                                </v-card-text>
+
+                                <v-card-subtitle>
+                                    <div :class="[width > 1280 ? 'news_date mb-3' : width > 620 ? 'news_date_mobile mb-3' : width > 320 ? 'news_date_mini mb-3' : 'news_date_mini mb-1']">{{ n.datePublished }}</div>
+                                </v-card-subtitle>
+                                
+                                    <v-card-actions>
+
+                                        <v-btn
+                                            :color="addColot"
+                                            variant="text"
+                                            @click="this.$router.push({name: 'NewsInf', params: {id: n.id}})"
+                                        >
+                                            <span class="news_title_btn">Подробнее</span>
+                                        </v-btn>
+
+                                        <v-spacer></v-spacer>
+                                    
+                                
+                                        <v-btn
+                                            :icon="selected_btn === index ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                                            @click="shortDescription(index)"
+                                        ></v-btn>
+                                    </v-card-actions>
+                                    
+                                    <v-expand-transition>
+                                        <div v-show="this.selected_btn === index">
+                                            <v-divider></v-divider>
+
+                                            <v-card-text>
+                                                {{ n.shortDescription }}
+                                            </v-card-text>
+                                        </div>
+                                    </v-expand-transition>
+
+                            </v-card>
                 </template>
 
                 <v-pagination
@@ -79,6 +130,7 @@ export default{
     setup(){
         const width = inject("width");
         const mainColor = inject("mainColor");
+        const addColot = inject("addColor")
         const URL_NEWS = import.meta.env.VITE_ADDRESS_NEWS;
 
         const state = reactive({
@@ -96,7 +148,7 @@ export default{
 
         getData()
         return {
-            width, mainColor, URL_NEWS, state
+            width, mainColor, URL_NEWS, state, addColot
         }
     },
 
@@ -108,7 +160,8 @@ export default{
 
     data(){
         return{
-                page: 1
+                page: 1,
+                selected_btn: "not_show"
         }
     },
     methods: {
@@ -118,6 +171,17 @@ export default{
 
         get_start(){
             window.scrollTo({ top: 0, behavior: 'smooth'});
+        },
+
+        shortDescription(index){
+            if (this.selected_btn != index){
+                this.selected_btn = index;
+            }
+
+            else {
+                this.selected_btn = "not_show";
+            }
+
         }
     },
 
@@ -196,6 +260,11 @@ export default{
     font-family: "MontserratMedium";
     font-size: 18px; 
     text-align: center; 
+}
+
+.news_title_btn{
+    font-family: "MontserratMedium";
+    font-weight: bold;
 }
 
 </style>

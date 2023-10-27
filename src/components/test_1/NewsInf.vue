@@ -81,7 +81,6 @@ export default{
         get_data(news_id){
             axios.get(`${this.News_API}news/${news_id}`)
             .then(response => {
-                console.log(response.data.news_detail)
                 this.title = response.data.news_detail.title,
                 this.photo_preview_news = response.data.news_detail.photo_preview_news,
                 this.shortDescription = response.data.news_detail.shortDescription,
@@ -92,6 +91,7 @@ export default{
     },
 
     mounted(){
+        this.get_start();
         this.get_data(this.$route.params.id)
     }
 }
