@@ -5,7 +5,7 @@
         <title-component title="Новости" />
 
         <v-row>
-            <v-col v-if="width >= 1280"></v-col>
+            <!-- <v-col v-if="width >= 1280"></v-col>
             
             
             <v-col v-if="state.news.length != 0" :cols="[width >= 1280 ? 8 : 12]">
@@ -25,12 +25,12 @@
                                 <v-card-text>
                                     <v-row>
                                         <v-col :cols="[width > 620 ? 4: 6]">
-                                            <v-img
-                                                :src="n.photo_preview_news"
-                                                :height="[width >= 320 ? 220 : 120]"
-                                                cover
-                                            >
-                                            </v-img>
+                                                    <v-img
+                                                        :src="n.photo_preview_news"
+                                                        :height="[width >= 320 ? 220 : 120]"
+                                                        cover
+                                                    >
+                                                    </v-img>
                                         </v-col>
 
                                         <v-col :cols="[width > 620 ? 8: 6]">
@@ -44,7 +44,7 @@
                         </template>
                     </v-hover>
                     
-                    <!-- для мобильных версий -->
+                    для мобильных версий
                             <v-card
                                 class="mx-auto mb-5"
                                 max-width="344"
@@ -111,8 +111,17 @@
             <v-col :class="[width > 1280 ? 'news_isapsent' : 'news_isapsent_mobile' ]" v-else :cols="[width >= 1280 ? 8 : 12]">
                 Новостей пока нет
             </v-col>
-            <v-col v-if="width >= 1280" ></v-col>
+            <v-col v-if="width >= 1280" ></v-col> -->
         </v-row>
+        <!-- <suspense>
+            <template #default>
+                {{ newsData.name }}
+            </template>
+            <template #fallback>
+                Loading...
+            </template>
+        </suspense> -->
+        sss
      </v-container>
 </template>
 
@@ -122,10 +131,32 @@ import AnketTitleVue from './details/ankets/AnketTitle.vue';
 import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
 import axios from 'axios';
 import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
-import { inject, reactive } from 'vue';
+import { inject, reactive, ref } from 'vue';
 
+// const getDataFromAPI = async () => {
+//         return new Promise((resolve) => {
+//             // axios.get(`${URL_NEWS}news`)
+//             // .then((response) => {
+//             //     resolve({
+//             //         news: response.data.news,
+//             //         pages_county: response.data.pages_county
+//             //     })
+//             //     // state.news = response.data.news;
+//             //     // state.pages_county = response.data.pages_county
+//             // })
+
+//             setTimeout(() => {
+//                 resolve({
+//                     name : 'asd',
+//                     bio: "sds"
+//                 })
+//             }, 2000)
+//         })
+//     }
 
 export default{
+
+
 
     setup(){
         const width = inject("width");
@@ -138,19 +169,25 @@ export default{
             pages_county: 1
         })
 
-        function getData(){
-            axios.get(`${URL_NEWS}news`)
-            .then((response) => {
-                state.news = response.data.news;
-                state.pages_county = response.data.pages_county
-            })
-        }
+        // function getData(){
+        //     axios.get(`${URL_NEWS}news`)
+        //     .then((response) => {
+        //         state.news = response.data.news;
+        //         state.pages_county = response.data.pages_county
+        //     })
+        // }
 
-        getData()
+        // getData()
         return {
             width, mainColor, URL_NEWS, state, addColot
         }
     },
+
+    // async setup(){
+    //     const newsData = ref(await getDataFromAPI)
+
+    //     return newsData
+    // },
 
     components: {
         ButtonBack,
@@ -161,7 +198,8 @@ export default{
     data(){
         return{
                 page: 1,
-                selected_btn: "not_show"
+                selected_btn: "not_show",
+                loading: true
         }
     },
     methods: {
