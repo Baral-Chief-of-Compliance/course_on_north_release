@@ -4,6 +4,9 @@
         <button-back label="на главную" @my-event="go_back"/>
         <title-component title="Новости" />
 
+        <news-list-skeleton :width="width" :mainColor="mainColor" :addColor="addColor" />
+
+
         <v-row>
             <!-- <v-col v-if="width >= 1280"></v-col>
             
@@ -132,6 +135,7 @@ import TitleComponent from '@/components/test_1/details/TitleComponents.vue';
 import axios from 'axios';
 import { set_part_of_navbar } from '@/localstorage/storage_of_location_site';
 import { inject, reactive, ref } from 'vue';
+import NewsListSkeleton from '@/components/news/NewsListSkeleton.vue';
 
 // const getDataFromAPI = async () => {
 //         return new Promise((resolve) => {
@@ -161,7 +165,7 @@ export default{
     setup(){
         const width = inject("width");
         const mainColor = inject("mainColor");
-        const addColot = inject("addColor")
+        const addColor = inject("addColor")
         const URL_NEWS = import.meta.env.VITE_ADDRESS_NEWS;
 
         const state = reactive({
@@ -179,7 +183,7 @@ export default{
 
         // getData()
         return {
-            width, mainColor, URL_NEWS, state, addColot
+            width, mainColor, URL_NEWS, state, addColor
         }
     },
 
@@ -192,7 +196,8 @@ export default{
     components: {
         ButtonBack,
         AnketTitleVue,
-        TitleComponent
+        TitleComponent,
+        NewsListSkeleton
     },
 
     data(){
