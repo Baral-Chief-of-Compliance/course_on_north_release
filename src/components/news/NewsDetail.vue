@@ -14,7 +14,9 @@
 
         <v-divider class="border-opacity-75 mb-5 mt-2" ></v-divider>
 
-        <div v-html="newsDetail.textNews" class="mb-5"></div>
+        <div v-html="newsDetail.textNews"></div>
+
+        <v-row class="my-5"></v-row>
 
 </template>
 
