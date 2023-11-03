@@ -53,7 +53,7 @@
                             <v-card
                                 class="mx-auto mb-5"
                                 max-width="344"
-                                v-if="width <= 659"
+                                v-if="width <= 659 && n.page === page"
                             >
                                 <v-img
                                 :src="n.photo_preview_news"
