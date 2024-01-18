@@ -1,7 +1,7 @@
 <template>
     <div id="health_worker_info" :style="componentColor">
         <v-container  class="py-10">
-            <TitleComponent :typeStyle="typeStyle" title="меры поддержки для медецинских работников" />
+            <TitleComponent :typeStyle="typeStyle" title="меры поддержки для медицинских работников" />
             <!-- <TextForInfBlock :textContent="text" :textStyle="textComponent" /> -->
 
             <!-- <v-row v-for="(card, index) in cards_info" >
