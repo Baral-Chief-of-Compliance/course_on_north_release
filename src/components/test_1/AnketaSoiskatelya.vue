@@ -226,7 +226,6 @@
                     <!-- <FileInputComponent title="Прикрепить резюме" /> -->
 
                     <v-file-input 
-                        accept="application/pdf"
                         variant="solo-filled"
                         label="Прикрепить резюме"
                         :color="mainColor"
@@ -564,7 +563,16 @@ export default{
                 fd.append("generalExperience", this.generalExperience);
                 fd.append("positionAtLastJob", this.positionAtLastJob);
                 fd.append("additionalInf", this.additionalInf);
-                fd.append("summary", this.summary, this.summary.name);
+                //fd.append("summary", this.summary, this.summary.name);
+                if (this.summary != ""){
+                    console.log("непустое")
+                    fd.append("summary", this.summary, this.summary.name);
+                }else{
+                    console.log("пустое")
+                    const array = ['<q id="a"><span id="b">hey!</span></q>']; // an array consisting of a single string
+                    const blob = new Blob(array, { type: "text/html" }); // the blob
+                    fd.append("summary", blob, "пустой.html")
+                }
 
                 axios.post(`${this.sendre_api}anketa_soiskatel`, fd)
 
