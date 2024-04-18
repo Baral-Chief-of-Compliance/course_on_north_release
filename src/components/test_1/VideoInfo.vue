@@ -130,7 +130,7 @@ import { inject } from 'vue';
     }
 </script>
 
-<style scoped>
+<style>
 .video-on-page{
     /* width: 1000px;
     height: 500px; */

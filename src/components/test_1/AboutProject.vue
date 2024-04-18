@@ -7,39 +7,40 @@
 
 
 
-        <v-container>
-            <v-row :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
-                <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
-                <v-col :cols="[ width > 1280 ? 6 : 8 ]">Телефон «горячей линии» Cлужбы сопровождения</v-col>
-                <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
-            </v-row>
+            <v-container>
+                <v-row :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
+                    <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+                    <v-col :cols="[ width > 1280 ? 6 : 8 ]">Телефон «горячей линии» Cлужбы сопровождения</v-col>
+                    <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+                </v-row>
 
-            <v-row v-if="width >= 585" :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
-                <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
-                <v-col :cols="[ width > 1280 ? 6 : 8 ]">«Курс на Север»: 8 (8152) 56-67-07</v-col>
-                <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
-            </v-row>
+                <v-row v-if="width >= 585" :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
+                    <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+                    <v-col :cols="[ width > 1280 ? 6 : 8 ]">«Курс на Север»: 8 (8152) 56-67-07</v-col>
+                    <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+                </v-row>
 
-            <v-row v-if="width < 585" class="text_style_phone_number_mobile" :style="textComponent" no-gutters justify="center">
-                <v-col>«Курс на Север»:</v-col>
-            </v-row>
+                <v-row v-if="width < 585" class="text_style_phone_number_mobile" :style="textComponent" no-gutters justify="center">
+                    <v-col>«Курс на Север»:</v-col>
+                </v-row>
 
-            <v-row v-if="width < 585" class="text_style_phone_number_mobile" :style="textComponent" no-gutters justify="center">
-                <v-col>8 (8152) 56-67-07</v-col>
-            </v-row>
-        </v-container>
+                <v-row v-if="width < 585" class="text_style_phone_number_mobile" :style="textComponent" no-gutters justify="center">
+                    <v-col>8 (8152) 56-67-07</v-col>
+                </v-row>
+            </v-container>
 
-        <TextForInfBlock :textContent="text_3" :textStyle="textComponent" />
-        <!-- <TextForInfBlock :textContent="text_4" :textStyle="textComponent" /> -->
+            <TextForInfBlock :textContent="text_3" :textStyle="textComponent" />
+            <!-- <TextForInfBlock :textContent="text_4" :textStyle="textComponent" /> -->
 
-        <v-container>
-            <v-row :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
-                <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
-                <v-col :cols="[ width > 1280 ? 6 : 8 ]">Пора взять Курс на Север!</v-col>
-                <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
-            </v-row>
-        </v-container>
-
+            <v-container>
+                <v-row :class="[ width > 1280 ? 'text_style_phone_number' : 'text_style_phone_number_mobile' ]" :style="textComponent" no-gutters justify="center">
+                    <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+                    <v-col :cols="[ width > 1280 ? 6 : 8 ]">Пора взять Курс на Север!</v-col>
+                    <v-col :cols="[ width > 1280 ? 0 : 2]"></v-col>
+                </v-row>
+            </v-container>
+        
+            <iframe class="video-on-page" src="https://vk.com/video_ext.php?oid=-80246985&id=456246796&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen :style="{ width: width * similarityFactorWidth  + 'px', height: width * similarityFactorHeight + 'px'}"></iframe>
         </v-container>
     </div>
 </template>
@@ -80,6 +81,9 @@ export default{
         const width = inject("width");
         const height = inject("height");
 
+        const similarityFactorWidth = 0.67;
+        const similarityFactorHeight = 0.42;
+
         const componentColor = {
             backgroundColor: 'white'
         }
@@ -94,7 +98,25 @@ export default{
             textComponent.color = 'white'
         }
 
-        return { mainColor, componentColor, textComponent, width, height }
+        function maxWidthVideo(){
+                return width * similarityFactorWidth
+            }
+
+        function maxHeightVideo(){
+            return this.width * this.similarityFactorHeight
+        }
+
+        return { 
+            mainColor, 
+            componentColor, 
+            textComponent, 
+            width, 
+            height,
+            maxWidthVideo,
+            maxHeightVideo,
+            similarityFactorWidth,
+            similarityFactorHeight
+        }
     }
 }
 </script>
