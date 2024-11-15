@@ -5,7 +5,7 @@
         </v-col>
 
         <v-col cols="10">
-            <div class="phone_number">8 (8152) 56-67-07</div>
+            <div class="phone_number">+7 (911) 322-36-15</div>
         </v-col>
          
         
@@ -16,7 +16,7 @@
             <v-icon class="mt-2" color="white" icon="mdi-email"></v-icon> 
         </v-col>
         <v-col cols="10">
-            <a href="mailto:KursNaSever@murman-zan.ru" class="vk" >KursNaSever@&shy;murman-zan.ru</a>
+            <a href="mailto:info@kursnasever.ru" class="vk" >info@&shy;kursnasever.ru</a>
         </v-col>
     </v-row>
 

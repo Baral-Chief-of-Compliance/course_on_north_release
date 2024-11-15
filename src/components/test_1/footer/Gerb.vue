@@ -11,7 +11,7 @@
 
     <v-row class="d-flex justify-center mt-10">
         <div class="rights">
-            © 2023 «Курс на Север»  
+            © 2024 «Курс на Север»  
         </div>
     </v-row>
 
